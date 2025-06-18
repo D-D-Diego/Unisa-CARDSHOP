@@ -21,6 +21,8 @@
   </div>
 </header>
 
+<!-- ...resto del codice invariato... -->
+
 <main class="container auth-form-container">
   <div class="auth-form-box">
     <h2>Accedi</h2>
@@ -34,10 +36,29 @@
         <input type="password" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary">Accedi</button>
-      <p class="form-link">Non hai un account? <a href="register.html">Registrati</a></p>
+      <p class="form-link">Non hai un account? <a href="#" id="open-register">Registrati</a></p>
     </form>
   </div>
 </main>
+
+<!-- Modal di registrazione -->
+<div id="register-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" id="close-register">&times;</span>
+    <h2>Registrati</h2>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="reg-email">Email:</label>
+        <input type="email" id="reg-email" name="reg-email" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Password:</label>
+        <input type="password" id="reg-password" name="reg-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Registrati</button>
+    </form>
+  </div>
+</div>
 
 <footer class="main-footer">
   <div class="container">
@@ -50,5 +71,21 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script src="js/auth.js"></script> </body>
+<script src="js/auth.js"></script>
+<script>
+  document.getElementById('open-register').onclick = function(e) {
+    e.preventDefault();
+    document.getElementById('register-modal').style.display = 'block';
+  };
+  document.getElementById('close-register').onclick = function() {
+    document.getElementById('register-modal').style.display = 'none';
+  };
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('register-modal')) {
+      document.getElementById('register-modal').style.display = 'none';
+    }
+  };
+</script>
+</body>
+
 </html>
