@@ -54,4 +54,11 @@
 
 <footer class="main-footer">
     <div class="container">
-        <p>&copy; 2025 Unisa-Cardshop. Tutti i diritti riservati.</
+        <p>&copy; 2025 Unisa-Cardshop. Tutti i diritti riservati.</p>
+        <div class="footer-links">
+            <a href="privacy.jsp">Informativa sulla Privacy</a>
+            <a href="terms.jsp">Termini di Servizio</a>
+        </div>
+    </div>
+</footer>
+</html>
