@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -9,19 +10,17 @@
 <body>
 <header class="main-header">
   <div class="container">
-    <h1 class="logo"><a href="index.html">Unisa-Cardshop</a></h1>
+    <h1 class="logo"><a href="index.jsp">Unisa-Cardshop</a></h1>
     <nav class="main-nav">
       <ul>
-        <li><a href="products.html">Prodotti</a></li>
-        <li><a href="categories.html">Categorie</a></li>
-        <li><a href="cart.html">Carrello</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="products.jsp">Prodotti</a></li>
+        <li><a href="categories.jsp">Categorie</a></li>
+        <li><a href="cart.jsp">Carrello</a></li>
+        <li><a href="login.jsp">Login</a></li>
       </ul>
     </nav>
   </div>
 </header>
-
-<!-- ...resto del codice invariato... -->
 
 <main class="container auth-form-container">
   <div class="auth-form-box">
@@ -36,28 +35,21 @@
         <input type="password" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary">Accedi</button>
-      <p class="form-link">Non hai un account? <a href="Registrazione.html">Registrati</a></p>
+      <p class="form-link">Non hai un account? <a href="register.jsp">Registrati</a></p>
     </form>
   </div>
 </main>
-
-
-
-</div>
 
 <footer class="main-footer">
   <div class="container">
     <p>&copy; 2025 Unisa-Cardshop. Tutti i diritti riservati.</p>
     <div class="footer-links">
-      <a href="privacy.html">Informativa sulla Privacy</a>
-      <a href="terms.html">Termini di Servizio</a>
+      <a href="privacy.jsp">Informativa sulla Privacy</a>
+      <a href="terms.jsp">Termini di Servizio</a>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
-<script src="js/auth.js"></script>
-
-</body>
-
+<script src="js/auth.js"></script> </body>
 </html>
