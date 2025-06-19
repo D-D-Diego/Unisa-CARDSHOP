@@ -35,7 +35,7 @@
         <input type="password" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary">Accedi</button>
-      <p class="form-link">Non hai un account? <a href="register.jsp">Registrati</a></p>
+      <p class="form-link">Non hai un account? <a href="Registrazione.jsp">Registrati</a></p>
     </form>
   </div>
 </main>

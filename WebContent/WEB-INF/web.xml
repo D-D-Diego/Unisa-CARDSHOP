@@ -8,5 +8,7 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
+    <welcome-file>Registrazione.jsp</welcome-file>
   </welcome-file-list>
+  <url-pattern>/RegisterServlet</url-pattern>.
 </web-app>
