@@ -38,6 +38,5 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script src="js/allProductsLoader.js"></script> </body>
+</body>
 </html>

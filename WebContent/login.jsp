@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -50,6 +50,5 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script src="js/auth.js"></script> </body>
+</body>
 </html>

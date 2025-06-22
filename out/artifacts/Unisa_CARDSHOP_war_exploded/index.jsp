@@ -8,19 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="main-header">
-    <div class="container">
-        <h1 class="logo"><a href="index.jsp">Unisa-Cardshop</a></h1>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="products.jsp">Prodotti</a></li>
-                <li><a href="categories.jsp">Categorie</a></li>
-                <li><a href="cart.jsp">Carrello</a></li>
-                <li><a href="login.jsp">Login</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<%@include file="header.jsp"%>
 
 <main class="container hero-section">
     <section class="featured-products">
@@ -33,32 +21,25 @@
         <h2>Esplora le Nostre Categorie</h2>
         <div class="category-grid">
             <a href="products.jsp?category=pokemon" class="category-item">
-                <img src="https://via.placeholder.com/200x150?text=Pokemon" alt="Pokemon Cards">
+                <img src="" alt="Pokemon Cards">
                 <h3>Pokemon</h3>
             </a>
             <a href="products.jsp?category=magic" class="category-item">
-                <img src="https://via.placeholder.com/200x150?text=Magic" alt="Magic: The Gathering Cards">
+                <img src="c" alt="Magic: The Gathering Cards">
                 <h3>Magic: The Gathering</h3>
             </a>
             <a href="products.jsp?category=yugioh" class="category-item">
-                <img src="https://via.placeholder.com/200x150?text=YuGiOh" alt="Yu-Gi-Oh! Cards">
+                <img src="" alt="Yu-Gi-Oh! Cards">
                 <h3>Yu-Gi-Oh!</h3>
             </a>
             <a href="products.jsp?category=other" class="category-item">
-                <img src="https://via.placeholder.com/200x150?text=Altro" alt="Other Cards">
+                <img src="" alt="Other Cards">
                 <h3>Altro</h3>
             </a>
         </div>
     </section>
 </main>
 
-<footer class="main-footer">
-    <div class="container">
-        <p>&copy; 2025 Unisa-Cardshop. Tutti i diritti riservati.</p>
-        <div class="footer-links">
-            <a href="privacy.jsp">Informativa sulla Privacy</a>
-            <a href="terms.jsp">Termini di Servizio</a>
-        </div>
-    </div>
-</footer>
+<%@include file="footer.jsp"%>
+</body>
 </html>

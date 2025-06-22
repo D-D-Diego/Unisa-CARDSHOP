@@ -50,6 +50,5 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script src="js/auth.js"></script> </body>
+</body>
 </html>
