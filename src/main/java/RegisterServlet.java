@@ -1,4 +1,5 @@
 import java.io.*;
+import java.sql.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,7 +11,24 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        // Qui puoi aggiungere la logica di registrazione (es. salvataggio su database)
+        String url = "jdbc:mysql://localhost:3306/gestione_utenti";
+        String user = "root"; // Sostituisci con il tuo utente MySQL
+        String dbPassword = ""; // Sostituisci con la tua password MySQL
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa-cardshopdb", user, dbPassword);
+            String sql = "INSERT INTO utenti (email, password) VALUES (?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, password); // Consigliato: hashare la password!
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<h2>Registrazione avvenuta per: " + email + "</h2>");
