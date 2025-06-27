@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -25,7 +25,7 @@
                 <h3>Pokemon</h3>
             </a>
             <a href="products.jsp?category=magic" class="category-item">
-                <img src="c" alt="Magic: The Gathering Cards">
+                <img src="" alt="Magic: The Gathering Cards">
                 <h3>Magic: The Gathering</h3>
             </a>
             <a href="products.jsp?category=yugioh" class="category-item">
