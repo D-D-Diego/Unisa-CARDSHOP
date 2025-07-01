@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unisa-Cardshop - La tua destinazione per carte collezionabili</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 <%@ include file="header.jsp" %>
 
-<title>Categorie - Unisa-Cardshop</title>
+<title>Categorie -  Unisa-Cardshop</title>
 
 <main class="container">
     <h2 class="page-title">Esplora per Categoria</h2>

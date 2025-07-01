@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrati - Unisa-Cardshop</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <%@include file="header.jsp"%>
