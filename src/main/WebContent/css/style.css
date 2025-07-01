@@ -476,3 +476,125 @@ main {
         margin-top: 10px;
     }
 }
+
+@media (max-width: 480px) {
+    .main-header .container,
+    .main-footer .container {
+        padding: 0 15px;
+    }
+
+    .logo a {
+        font-size: 1.6em;
+    }
+
+    .main-nav ul {
+        gap: 6px;
+    }
+
+    .product-card {
+        padding: 15px;
+    }
+
+    .product-card img {
+        height: auto;
+        max-height: 160px;
+    }
+
+    .product-info h2 {
+        font-size: 1.6em;
+    }
+
+    .product-info p {
+        font-size: 1em;
+    }
+
+    .product-detail-grid {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .auth-form-box {
+        padding: 25px 20px;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .cart-summary {
+        font-size: 1.2em;
+    }
+
+    .cart-summary .btn {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+
+    .btn {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .page-title {
+        font-size: 2em;
+        padding: 0 10px;
+    }
+
+    .product-grid,
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card h3 {
+        font-size: 1.2em;
+    }
+
+    .product-card p {
+        font-size: 0.85em;
+    }
+
+    .btn {
+        font-size: 1em;
+        padding: 10px 16px;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        padding: 10px;
+        font-size: 1em;
+    }
+}
