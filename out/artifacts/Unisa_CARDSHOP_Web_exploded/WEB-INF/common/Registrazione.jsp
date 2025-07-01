@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrati - Unisa-Cardshop</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<header class="main-header">
-    <!-- ... -->
-</header>
+<%@include file="header.jsp"%>
 
 <main class="container auth-form-container">
     <div class="auth-form-box">
@@ -28,8 +26,8 @@
     </div>
 </main>
 
-<footer class="main-footer">
-    <!-- ... -->
-</footer>
+<%@include file="footer.jsp"%>
+
+
 </body>
 </html>
