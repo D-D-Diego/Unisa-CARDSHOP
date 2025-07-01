@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accedi - Unisa-Cardshop</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="common/header.jsp"%>
 
 <main class="container auth-form-container">
   <div class="auth-form-box">
@@ -28,7 +28,7 @@
   </div>
 </main>
 
-<%@include file="footer.jsp"%>
+<%@include file="common/footer.jsp"%>
 
 </body>
 </html>

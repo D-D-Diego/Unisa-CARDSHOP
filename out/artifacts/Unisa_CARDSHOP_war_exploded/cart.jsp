@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Mio Carrello - Unisa-Cardshop</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="common/header.jsp" %>
 
 <main class="container">
     <h2 class="page-title">Il Tuo Carrello</h2>
@@ -21,7 +21,7 @@
     </div>
 </main>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="common/footer.jsp" %>
 
 </body>
 </html>
