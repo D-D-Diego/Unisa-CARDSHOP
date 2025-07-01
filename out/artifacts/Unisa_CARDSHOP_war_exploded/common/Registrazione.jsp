@@ -4,17 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrati - Unisa-Cardshop</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<header class="main-header">
-    <!-- ... -->
-</header>
+<%@include file="header.jsp"%>
 
 <main class="container auth-form-container">
     <div class="auth-form-box">
         <h2>Registrati</h2>
-        <form id="register-form" action="RegisterServlet" method="post">
+        <form id="register-form" action="" method="post">
             <div class="form-group">
                 <label for="reg-email">Email:</label>
                 <input type="email" id="reg-email" name="email" required>
@@ -28,8 +26,7 @@
     </div>
 </main>
 
-<footer class="main-footer">
-    <!-- ... -->
-</footer>
+<%@include file="footer.jsp"%>
+
 </body>
 </html>

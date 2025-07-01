@@ -12,7 +12,7 @@
 <main class="container auth-form-container">
     <div class="auth-form-box">
         <h2>Registrati</h2>
-        <form id="register-form" action="RegisterServlet" method="post">
+        <form id="register-form" action="" method="post">
             <div class="form-group">
                 <label for="reg-email">Email:</label>
                 <input type="email" id="reg-email" name="email" required>
