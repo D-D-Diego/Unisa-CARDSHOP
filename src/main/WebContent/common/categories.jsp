@@ -11,7 +11,7 @@
 <body>
 <%@ include file="header.jsp" %>
 
-<title>Categorie -  Unisa-Cardshop</title>
+<title>Categorie   -  Unisa-Cardshop</title>
 
 <main class="container">
     <h2 class="page-title">Esplora per Categoria</h2>
