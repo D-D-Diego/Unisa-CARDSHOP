@@ -9,11 +9,10 @@
 </head>
 <body>
 <%@include file="common/header.jsp"%>
-
 <main class="container auth-form-container">
   <div class="auth-form-box">
     <h2>Accedi</h2>
-    <form id="login-form">
+    <form id="login-form" action="java/RegisterServlet" method="post">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
