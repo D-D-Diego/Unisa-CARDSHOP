@@ -12,8 +12,8 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String url = "jdbc:mysql://localhost:3306/gestione_utenti";
-        String user = "root"; // Sostituisci con il tuo utente MySQL
-        String dbPassword = ""; // Sostituisci con la tua password MySQL
+        String user = "root";
+        String dbPassword = "";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
