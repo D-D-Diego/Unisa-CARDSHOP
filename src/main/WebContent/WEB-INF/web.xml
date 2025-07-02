@@ -7,5 +7,4 @@
         <welcome-file>default.htm</welcome-file>
         <welcome-file>Registrazione.jsp</welcome-file>
     </welcome-file-list>
-
 </web-app>
