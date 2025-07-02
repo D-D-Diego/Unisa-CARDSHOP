@@ -1,10 +1,10 @@
+package control;
+
 import java.io.*;
 import java.sql.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.WebServlet;
 
-@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

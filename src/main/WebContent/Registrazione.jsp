@@ -12,7 +12,7 @@
 <main class="container auth-form-container">
     <div class="auth-form-box">
         <h2>Registrati</h2>
-        <form id="register-form" action="java/RegisterServlet" method="post">
+        <form id="register-form" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
             <div class="form-group">
                 <label for="reg-email">Email:</label>
                 <input type="email" id="reg-email" name="email" required>
