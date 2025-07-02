@@ -1,2 +1,3 @@
 # Ignora la cartella di configurazione di IntelliJ IDEA
 /.idea/
+/out/
