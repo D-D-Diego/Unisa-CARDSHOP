@@ -10,14 +10,4 @@
         <welcome-file>default.htm</welcome-file>
         <welcome-file>Registrazione.jsp</welcome-file>
     </welcome-file-list>
-
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>control.RegisterServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/RegisterServlet</url-pattern>
-    </servlet-mapping>
-
 </web-app>
