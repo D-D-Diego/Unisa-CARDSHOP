@@ -1,4 +1,4 @@
-package model;
+package it.unisa.cardshop.model;
 
 public class Prodotto {
     private int id;
@@ -7,10 +7,11 @@ public class Prodotto {
     private double prezzo;
     private int quantita;
     private int categoriaId;
+    private boolean isDisponibile;
 
     public Prodotto() {}
 
-    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId) {
+    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId, boolean isDisponibile) {
         this.id = id;
         this.nome = nome;
         this.descrizione = descrizione;
@@ -49,10 +50,10 @@ public class Prodotto {
     public void setQuantita(int quantita) {
         this.quantita = quantita;
     }
-    public Integer getCategoriaId() {
-        return categoriaId;
-    }
-    public void setCategoriaId(Integer categoriaId) {
+    public int getCategoriaId() { return categoriaId;}
+    public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
     }
+    public boolean isDisponibile() { return isDisponibile;}
+    public void setDisponibile(boolean isDisponibile) { this.isDisponibile = isDisponibile;}
 }

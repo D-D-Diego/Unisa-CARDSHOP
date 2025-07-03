@@ -1,4 +1,4 @@
-package model;
+package it.unisa.cardshop.model;
 
 public class DettaglioOrdine {
     private int ordineId;

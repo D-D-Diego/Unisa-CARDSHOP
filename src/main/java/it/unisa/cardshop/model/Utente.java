@@ -1,3 +1,5 @@
+package it.unisa.cardshop.model;
+
 public class Utente {
     private int id;
     private String nome;
@@ -5,10 +7,11 @@ public class Utente {
     private String passwordHash;
     private String telefono;
     private String indirizzo;
+    private boolean isAdmin;
 
     public Utente() {}
 
-    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo) {
+    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo, boolean isAdmin) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -49,4 +52,6 @@ public class Utente {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
+    public boolean isAdmin() { return isAdmin; }
+    public void setAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
 }
