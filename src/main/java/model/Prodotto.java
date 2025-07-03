@@ -1,14 +1,16 @@
+package model;
+
 public class Prodotto {
     private int id;
     private String nome;
     private String descrizione;
     private double prezzo;
     private int quantita;
-    private Integer categoriaId;
+    private int categoriaId;
 
     public Prodotto() {}
 
-    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, Integer categoriaId) {
+    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId) {
         this.id = id;
         this.nome = nome;
         this.descrizione = descrizione;

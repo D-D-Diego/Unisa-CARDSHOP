@@ -1,16 +1,16 @@
+package model;
+
 public class DettaglioOrdine {
-    private int id;
-    private Integer ordineId;
-    private Integer prodottoId;
+    private int ordineId;
+    private int prodottoId;
     private int quantita;
     private double prezzoUnitario;
     private String indirizzo;
-    private Integer cap;
+    private int cap;
 
     public DettaglioOrdine() {}
 
-    public DettaglioOrdine(int id, Integer ordineId, Integer prodottoId, int quantita, double prezzoUnitario, String indirizzo, Integer cap) {
-        this.id = id;
+    public DettaglioOrdine(int ordineId, int prodottoId, int quantita, double prezzoUnitario, String indirizzo, int cap) {
         this.ordineId = ordineId;
         this.prodottoId = prodottoId;
         this.quantita = quantita;
@@ -19,18 +19,14 @@ public class DettaglioOrdine {
         this.cap = cap;
     }
 
-    public int getId() { return id;
+    public int getOrdineId() { return ordineId;
     }
-    public void setId(int id) { this.id = id;
+    public void setOrdineId(int ordineId) { this.ordineId = ordineId;
     }
-    public Integer getOrdineId() { return ordineId;
-    }
-    public void setOrdineId(Integer ordineId) { this.ordineId = ordineId;
-    }
-    public Integer getProdottoId() {
+    public int getProdottoId() {
         return prodottoId;
     }
-    public void setProdottoId(Integer prodottoId) {
+    public void setProdottoId(int prodottoId) {
         this.prodottoId = prodottoId;
     }
     public int getQuantita() {
@@ -51,10 +47,10 @@ public class DettaglioOrdine {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
-    public Integer getCap() {
+    public int getCap() {
         return cap;
     }
-    public void setCap(Integer cap) {
+    public void setCap(int cap) {
         this.cap = cap;
     }
 }

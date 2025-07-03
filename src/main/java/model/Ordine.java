@@ -1,14 +1,16 @@
+package model;
+
 import java.time.LocalDateTime;
 
 public class Ordine {
     private int id;
-    private Integer clienteId;
+    private int clienteId;
     private LocalDateTime dataOrdine;
     private double totale;
 
     public Ordine() {}
 
-    public Ordine(int id, Integer clienteId, LocalDateTime dataOrdine, double totale) {
+    public Ordine(int id, int clienteId, LocalDateTime dataOrdine, double totale) {
         this.id = id;
         this.clienteId = clienteId;
         this.dataOrdine = dataOrdine;
@@ -21,10 +23,10 @@ public class Ordine {
     public void setId(int id) {
         this.id = id;
     }
-    public Integer getClienteId() {
+    public int getClienteId() {
         return clienteId;
     }
-    public void setClienteId(Integer clienteId) {
+    public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
     public LocalDateTime getDataOrdine() {

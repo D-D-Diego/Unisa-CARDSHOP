@@ -16,23 +16,25 @@ public class RegisterServlet extends HttpServlet {
         String url = "jdbc:mysql://localhost:3306/gestione_utenti";
         String user = "root";
         String dbPassword = "";
-
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<h2>FILEEEEEEE</h2>");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa-cardshopdb", user, dbPassword);
-            String sql = "INSERT INTO utenti (email, password) VALUES (?, ?)";
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", user, dbPassword);
+            String sql = "INSERT INTO utente (nome, email, password_hash, telefono, indirizzo) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email);
-            stmt.setString(2, password); // Consigliato: hashare la password!
+            stmt.setString(1, "nome");
+            stmt.setString(2, email);
+            stmt.setString(3, password);
+            stmt.setString(4, "telefono");
+            stmt.setString(5, "indirizzo");
             stmt.executeUpdate();
             stmt.close();
             conn.close();
+            out.println("<h2>Registrazione avvenuta per: " + email + "</h2>");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<h2>Registrazione avvenuta per: " + email + "</h2>");
     }
 }
