@@ -7,37 +7,30 @@ import it.unisa.cardshop.model.dao.ProdottoDAO;
 
 public class ProdottoDAOImp implements ProdottoDAO {
 
-    private final Connection conn;
-
-    private Connection getConnection(Connection conn){
-        if (conn == null) {
-            throw new IllegalArgumentException("La connessione non può essere null");
-        }
-        this.conn = conn;
-    }
-
-
     @Override
     public void doSave(Prodotto prodotto) throws SQLException {
-        String sql = "INSERT INTO prodotti (nome, descrizione, prezzo, quantita) VALUES (?, ?, ?, ?)";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+        String sql = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, categoria_id) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, prodotto.getNome());
             stmt.setString(2, prodotto.getDescrizione());
             stmt.setDouble(3, prodotto.getPrezzo());
             stmt.setInt(4, prodotto.getQuantita());
-
+            stmt.setInt(5, prodotto.getCategoriaId());
             stmt.executeUpdate();
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    prodotto.setId(rs.getInt(1));
+                }
+            }
         }
     }
 
     @Override
     public Prodotto doRetrieveByKey(int id) throws SQLException {
-        String sql = "SELECT * FROM prodotti WHERE id = ?";
-        try (Connection conn = getConnection();
+        String sql = "SELECT id, nome, descrizione, prezzo, quantita, categoria_id FROM prodotto WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -50,55 +43,55 @@ public class ProdottoDAOImp implements ProdottoDAO {
 
     @Override
     public List<Prodotto> doRetrieveAll() throws SQLException {
-        List<Prodotto> prodotti = new ArrayList<>();
-        String sql = "SELECT * FROM prodotti";
-
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
+        String sql = "SELECT id, nome, descrizione, prezzo, quantita, categoria_id FROM prodotto";
+        List<Prodotto> list = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt2 = conn.prepareStatement(sql);
+             ResultSet rs = stmt2.executeQuery()) {
             while (rs.next()) {
-                prodotti.add(extractProdotto(rs));
+                list.add(extractProdotto(rs));
             }
         }
-
-        return prodotti;
+        return list;
     }
 
     @Override
     public void doUpdate(Prodotto prodotto) throws SQLException {
-        String sql = "UPDATE prodotti SET nome = ?, descrizione = ?, prezzo = ?, quantita = ? WHERE id = ?";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, prodotto.getNome());
-            stmt.setString(2, prodotto.getDescrizione());
-            stmt.setDouble(3, prodotto.getPrezzo());
-            stmt.setInt(4, prodotto.getQuantita());
-            stmt.setInt(5, prodotto.getId());
-
-            stmt.executeUpdate();
+        String sql = "UPDATE prodotto SET nome = ?, descrizione = ?, prezzo = ?, quantita = ?, categoria_id = ? WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, prodotto.getNome());
+            ps.setString(2, prodotto.getDescrizione());
+            ps.setDouble(3, prodotto.getPrezzo());
+            ps.setInt(4, prodotto.getQuantita());
+            ps.setInt(5, prodotto.getCategoriaId());
+            ps.setInt(6, prodotto.getId());
+            ps.executeUpdate();
         }
     }
 
     @Override
     public void doDelete(int id) throws SQLException {
-        String sql = "DELETE FROM prodotti WHERE id = ?";
-        try (Connection conn = getConnection();
+        String sql = "DELETE FROM prodotto WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }
     }
 
+
     private Prodotto extractProdotto(ResultSet rs) throws SQLException {
-        Prodotto prodotto = new Prodotto();
-        prodotto.setId(rs.getInt("id"));
-        prodotto.setNome(rs.getString("nome"));
-        prodotto.setDescrizione(rs.getString("descrizione"));
-        prodotto.setPrezzo(rs.getDouble("prezzo"));
-        prodotto.setQuantita(rs.getInt("quantita"));
-        return prodotto;
+        Prodotto stmt = new Prodotto();
+        stmt.setId(rs.getInt("id"));
+        stmt.setNome(rs.getString("nome"));
+        stmt.setDescrizione(rs.getString("descrizione"));
+        stmt.setPrezzo(rs.getDouble("prezzo"));
+        int quantita = rs.getInt("quantita");
+        stmt.setQuantita(quantita);
+        stmt.setCategoriaId(rs.getInt("categoria_id"));
+        // isDisponibile = true se quantita > 0
+        stmt.setDisponibile(quantita > 0);
+        return stmt;
     }
 }

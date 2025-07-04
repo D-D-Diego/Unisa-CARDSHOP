@@ -1,5 +1,8 @@
 package it.unisa.cardshop.model;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public class Prodotto {
     private int id;
     private String nome;

@@ -23,7 +23,7 @@ public class OrdineDAOImp implements OrdineDAO {
 
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
-                    ordine.setId(rs.getInt(1)); // imposta ID generato
+                    ordine.setId(rs.getInt(1));
                 }
             }
         }
