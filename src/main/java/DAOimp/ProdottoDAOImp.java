@@ -7,13 +7,15 @@ import it.unisa.cardshop.model.dao.ProdottoDAO;
 
 public class ProdottoDAOImp implements ProdottoDAO {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/cardshop"; // Cambia con il tuo DB
-    private static final String DB_USER = "root"; // Cambia con il tuo utente
-    private static final String DB_PASSWORD = "password"; // Cambia con la tua password
+    private final Connection conn;
 
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    private Connection getConnection(Connection conn){
+        if (conn == null) {
+            throw new IllegalArgumentException("La connessione non può essere null");
+        }
+        this.conn = conn;
     }
+
 
     @Override
     public void doSave(Prodotto prodotto) throws SQLException {
