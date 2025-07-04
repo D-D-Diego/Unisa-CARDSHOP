@@ -56,6 +56,7 @@ public class UtenteDAOImp implements UtenteDAO {
         String selectSQL = "SELECT * FROM utente WHERE email = ?";
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
             preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, email);
@@ -64,6 +65,38 @@ public class UtenteDAOImp implements UtenteDAO {
             if (rs.next()) {
                 utente = extractUtenteFromResultSet(rs);
             }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) rs.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return utente;
+    }
+
+    // In UtenteDAOImp.java
+    @Override
+    public Utente doRetrieveByTelefono(String telefono) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        Utente utente = null;
+
+        String selectSQL = "SELECT * FROM utente WHERE telefono = ?";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, telefono);
+            rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                utente = extractUtenteFromResultSet(rs);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (rs != null) rs.close();
             if (preparedStatement != null) preparedStatement.close();
@@ -82,6 +115,7 @@ public class UtenteDAOImp implements UtenteDAO {
         String selectSQL = "SELECT * FROM utente WHERE id = ?";
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa-cardshopdb", "root", "");
             preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setInt(1, id);
@@ -90,6 +124,8 @@ public class UtenteDAOImp implements UtenteDAO {
             if (rs.next()) {
                 utente = extractUtenteFromResultSet(rs);
             }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (rs != null) rs.close();
             if (preparedStatement != null) preparedStatement.close();
@@ -108,6 +144,7 @@ public class UtenteDAOImp implements UtenteDAO {
         String selectSQL = "SELECT * FROM utente";
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
             preparedStatement = connection.prepareStatement(selectSQL);
             rs = preparedStatement.executeQuery();
@@ -115,6 +152,8 @@ public class UtenteDAOImp implements UtenteDAO {
             while (rs.next()) {
                 utenti.add(extractUtenteFromResultSet(rs));
             }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (rs != null) rs.close();
             if (preparedStatement != null) preparedStatement.close();
@@ -131,6 +170,7 @@ public class UtenteDAOImp implements UtenteDAO {
         String updateSQL = "UPDATE utenti SET nome = ?, email = ?, password_hash = ?, telefono = ?, indirizzo = ?, is_admin = ? WHERE id = ?";
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
             preparedStatement = connection.prepareStatement(updateSQL);
 
@@ -143,6 +183,8 @@ public class UtenteDAOImp implements UtenteDAO {
             preparedStatement.setInt(7, utente.getId());
 
             preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (preparedStatement != null) preparedStatement.close();
             if (connection != null) connection.close();
@@ -157,10 +199,13 @@ public class UtenteDAOImp implements UtenteDAO {
         String deleteSQL = "DELETE FROM utenti WHERE id = ?";
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshopdb", "root", "");
             preparedStatement = connection.prepareStatement(deleteSQL);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (preparedStatement != null) preparedStatement.close();
             if (connection != null) connection.close();

@@ -18,37 +18,43 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nome = request.getParameter("nome");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String telefono = request.getParameter("telefono");
-        String indirizzo = request.getParameter("indirizzo");
-
-        // Qui dovresti implementare l'hashing della password per sicurezza!
-        // Esempio molto basilare, da sostituire con un algoritmo robusto come BCrypt.
-        String passwordHash = password; // DA SOSTITUIRE con una funzione di hash
-
-
-        Utente utente = new Utente();
-        utente.setNome(nome);
-        utente.setEmail(email);
-        utente.setPasswordHash(passwordHash);
-        utente.setTelefono(telefono);
-        utente.setIndirizzo(indirizzo);
-        utente.setAdmin(false);
-
-
         UtenteDAO utenteDAO = new UtenteDAOImp();
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+
         try {
+            if (utenteDAO.doRetrieveByEmail(email) != null) {
+                response.sendRedirect("register.jsp?error=email_exists");
+                return;
+            }
+
+            if (utenteDAO.doRetrieveByTelefono(telefono) != null) {
+                response.sendRedirect("register.jsp?error=telefono_exists");
+                return;
+            }
+
+            String nome = request.getParameter("nome");
+            String password = request.getParameter("password");
+            String indirizzo = request.getParameter("indirizzo");
+
+            // DA SOSTITUIRE con una vera funzione di hash
+            String passwordHash = password;
+
+            Utente utente = new Utente();
+            utente.setNome(nome);
+            utente.setEmail(email);
+            utente.setPasswordHash(passwordHash);
+            utente.setTelefono(telefono);
+            utente.setIndirizzo(indirizzo);
+            utente.setAdmin(false);
+
             utenteDAO.doSave(utente);
+
+            response.sendRedirect("login.jsp?registration=success");
+
         } catch (SQLException e) {
             e.printStackTrace();
-            // In un'applicazione reale, qui reindirizzeresti a una pagina di errore
-            throw new ServletException("Errore durante la registrazione dell'utente", e);
+            response.sendRedirect("register.jsp?error=db_error");
         }
-
-        // 4. Reindirizza a una pagina di successo o alla pagina di login
-        // Questo è molto meglio che stampare HTML direttamente dalla servlet.
-        response.sendRedirect("login.jsp?registration=success");
     }
 }

@@ -35,6 +35,30 @@
             </div>
             <button type="submit" class="btn btn-primary">Registrati</button>
         </form>
+        <p>Hai già un account? <a href="login.jsp">Accedi qui</a></p>
+        <%
+            String error = request.getParameter("error");
+            if (error != null) {
+                String errorMessage = "";
+                switch (error) {
+                    case "email_exists":
+                        errorMessage = "<strong>Errore:</strong> L'indirizzo email inserito è già in uso.";
+                        break;
+                    case "telefono_exists":
+                        errorMessage = "<strong>Errore:</strong> Il numero di telefono inserito è già in uso.";
+                        break;
+                    case "db_error":
+                    default:
+                        errorMessage = "<strong>Si è verificato un errore imprevisto.</strong> Riprova più tardi.";
+                        break;
+                }
+        %>
+        <div class="error-message">
+            <%= errorMessage %>
+        </div>
+        <%
+            }
+        %>
     </div>
 </main>
 
