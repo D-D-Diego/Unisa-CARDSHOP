@@ -23,7 +23,7 @@
                 <li><a href="../products.jsp">Prodotti</a></li>
                 <li><a href="../categories.jsp">Categorie</a></li>
                 <li><a href="../cart.jsp">Carrello</a></li>
-                <li><a href="../login.jsp">Login</a></li>
+                <li><a href="../login.jsp">Accedi</a></li>
             </ul>
         </nav>
     </div>

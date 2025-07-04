@@ -14,12 +14,24 @@
         <h2>Registrati</h2>
         <form id="register-form" action="register" method="post">
             <div class="form-group">
+                <label for="reg-nome">Nome Completo:</label>
+                <input type="text" id="reg-nome" name="nome" required>
+            </div>
+            <div class="form-group">
                 <label for="reg-email">Email:</label>
                 <input type="email" id="reg-email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="reg-password">Password:</label>
                 <input type="password" id="reg-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-telefono">Telefono:</label>
+                <input type="tel" id="reg-telefono" name="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="reg-indirizzo">Indirizzo di Spedizione:</label>
+                <input type="text" id="reg-indirizzo" name="indirizzo" required>
             </div>
             <button type="submit" class="btn btn-primary">Registrati</button>
         </form>

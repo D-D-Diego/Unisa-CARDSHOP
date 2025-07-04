@@ -1,40 +1,54 @@
 package control;
 
-import java.io.*;
-import java.sql.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+import it.unisa.cardshop.model.Utente;
+import it.unisa.cardshop.model.dao.UtenteDAO;
+import it.unisa.cardshop.model.dao.UtenteDAOImp;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String url = "jdbc:mysql://localhost:3306/gestione_utenti";
-        String user = "root";
-        String dbPassword = "";
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<h2>FILEEEEEEE</h2>");
+        String telefono = request.getParameter("telefono");
+        String indirizzo = request.getParameter("indirizzo");
+
+        // Qui dovresti implementare l'hashing della password per sicurezza!
+        // Esempio molto basilare, da sostituire con un algoritmo robusto come BCrypt.
+        String passwordHash = password; // DA SOSTITUIRE con una funzione di hash
+
+
+        Utente utente = new Utente();
+        utente.setNome(nome);
+        utente.setEmail(email);
+        utente.setPasswordHash(passwordHash);
+        utente.setTelefono(telefono);
+        utente.setIndirizzo(indirizzo);
+        utente.setAdmin(false);
+
+
+        UtenteDAO utenteDAO = new UtenteDAOImp();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", user, dbPassword);
-            String sql = "INSERT INTO utente (nome, email, password_hash, telefono, indirizzo) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "nome");
-            stmt.setString(2, email);
-            stmt.setString(3, password);
-            stmt.setString(4, "telefono");
-            stmt.setString(5, "indirizzo");
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            out.println("<h2>Registrazione avvenuta per: " + email + "</h2>");
-        } catch (Exception e) {
+            utenteDAO.doSave(utente);
+        } catch (SQLException e) {
             e.printStackTrace();
+            // In un'applicazione reale, qui reindirizzeresti a una pagina di errore
+            throw new ServletException("Errore durante la registrazione dell'utente", e);
         }
+
+        // 4. Reindirizza a una pagina di successo o alla pagina di login
+        // Questo è molto meglio che stampare HTML direttamente dalla servlet.
+        response.sendRedirect("login.jsp?registration=success");
     }
 }
