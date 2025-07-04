@@ -1,84 +1,102 @@
+package DAOimp;
 import java.sql.*;
 import java.util.*;
+import it.unisa.cardshop.model.Prodotto;
+import it.unisa.cardshop.model.dao.ProdottoDAO;
 
-public class ProdottoDAOImp implements DAOProdotto {
-    private Connection conn;
 
-    public ProdottoDAOImp(Connection conn) {
-        this.conn = conn;
+public class ProdottoDAOImp implements ProdottoDAO {
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/cardshop"; // Cambia con il tuo DB
+    private static final String DB_USER = "root"; // Cambia con il tuo utente
+    private static final String DB_PASSWORD = "password"; // Cambia con la tua password
+
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
     }
 
-    public void create(Prodotto p) {
-        String sql = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, categoria_id) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, p.getNome());
-            stmt.setString(2, p.getDescrizione());
-            stmt.setDouble(3, p.getPrezzo());
-            stmt.setInt(4, p.getQuantita());
-            if (p.getCategoriaId() != null) stmt.setInt(5, p.getCategoriaId());
-            else stmt.setNull(5, java.sql.Types.INTEGER);
+    @Override
+    public void doSave(Prodotto prodotto) throws SQLException {
+        String sql = "INSERT INTO prodotti (nome, descrizione, prezzo, quantita) VALUES (?, ?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, prodotto.getNome());
+            stmt.setString(2, prodotto.getDescrizione());
+            stmt.setDouble(3, prodotto.getPrezzo());
+            stmt.setInt(4, prodotto.getQuantita());
+
             stmt.executeUpdate();
-        } catch (SQLException e) { e.printStackTrace(); }
+        }
     }
 
-    public Prodotto findById(int id) {
-        String sql = "SELECT * FROM prodotto WHERE id = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+    @Override
+    public Prodotto doRetrieveByKey(int id) throws SQLException {
+        String sql = "SELECT * FROM prodotti WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Prodotto(
-                        rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getString("descrizione"),
-                        rs.getDouble("prezzo"),
-                        rs.getInt("quantita"),
-                        rs.getObject("categoria_id") != null ? rs.getInt("categoria_id") : null
-                );
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return extractProdotto(rs);
+                }
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        }
         return null;
     }
 
-    public List<Prodotto> findAll() {
-        List<Prodotto> list = new ArrayList<>();
-        String sql = "SELECT * FROM prodotto";
-        try (Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(sql);
+    @Override
+    public List<Prodotto> doRetrieveAll() throws SQLException {
+        List<Prodotto> prodotti = new ArrayList<>();
+        String sql = "SELECT * FROM prodotti";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
             while (rs.next()) {
-                list.add(new Prodotto(
-                        rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getString("descrizione"),
-                        rs.getDouble("prezzo"),
-                        rs.getInt("quantita"),
-                        rs.getObject("categoria_id") != null ? rs.getInt("categoria_id") : null
-                ));
+                prodotti.add(extractProdotto(rs));
             }
-        } catch (SQLException e) { e.printStackTrace(); }
-        return list;
+        }
+
+        return prodotti;
     }
 
-    public void update(Prodotto p) {
-        String sql = "UPDATE prodotto SET nome = ?, descrizione = ?, prezzo = ?, quantita = ?, categoria_id = ? WHERE id = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, p.getNome());
-            stmt.setString(2, p.getDescrizione());
-            stmt.setDouble(3, p.getPrezzo());
-            stmt.setInt(4, p.getQuantita());
-            if (p.getCategoriaId() != null) stmt.setInt(5, p.getCategoriaId());
-            else stmt.setNull(5, java.sql.Types.INTEGER);
-            stmt.setInt(6, p.getId());
+    @Override
+    public void doUpdate(Prodotto prodotto) throws SQLException {
+        String sql = "UPDATE prodotti SET nome = ?, descrizione = ?, prezzo = ?, quantita = ? WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, prodotto.getNome());
+            stmt.setString(2, prodotto.getDescrizione());
+            stmt.setDouble(3, prodotto.getPrezzo());
+            stmt.setInt(4, prodotto.getQuantita());
+            stmt.setInt(5, prodotto.getId());
+
             stmt.executeUpdate();
-        } catch (SQLException e) { e.printStackTrace(); }
+        }
     }
 
-    public void delete(int id) {
-        String sql = "DELETE FROM prodotto WHERE id = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+    @Override
+    public void doDelete(int id) throws SQLException {
+        String sql = "DELETE FROM prodotti WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
             stmt.executeUpdate();
-        } catch (SQLException e) { e.printStackTrace(); }
+        }
+    }
+
+    private Prodotto extractProdotto(ResultSet rs) throws SQLException {
+        Prodotto prodotto = new Prodotto();
+        prodotto.setId(rs.getInt("id"));
+        prodotto.setNome(rs.getString("nome"));
+        prodotto.setDescrizione(rs.getString("descrizione"));
+        prodotto.setPrezzo(rs.getDouble("prezzo"));
+        prodotto.setQuantita(rs.getInt("quantita"));
+        return prodotto;
     }
 }
-
