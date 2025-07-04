@@ -71,9 +71,7 @@ public class CategoriaDAOImp implements CategoriaDAO {
         }
     }
 
-    /**
-     * Mappa una riga di ResultSet a un oggetto Categoria
-     */
+
     private Categoria extractCategoria(ResultSet rs) throws SQLException {
         Categoria c = new Categoria();
         c.setId(rs.getInt("id"));
