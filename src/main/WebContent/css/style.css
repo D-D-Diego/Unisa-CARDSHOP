@@ -147,7 +147,6 @@ a:hover {
 
 .search-bar input[type="text"] {
     width: 70%;
-    height: 40px;
     padding: 10px;
     font-size: 1em;
     border: 1px solid var(--border-color);
@@ -156,14 +155,18 @@ a:hover {
     box-sizing: border-box;
 }
 
+.search-bar input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
 .search-bar button {
-    height: 40px;
-    padding: 0 20px;
+    padding: 10px 20px;
     border: 1px solid var(--primary-color);
     background-color: var(--primary-color);
     color: white;
     cursor: pointer;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0; /* Angoli arrotondati solo a destra */
     font-size: 1em;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -171,13 +174,6 @@ a:hover {
     display: flex;
     align-items: center;
 }
-
-.search-bar input[type="text"]:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-
 
 .search-bar button:hover {
     background-color: #e67300; /* Un arancione leggermente più scuro */
@@ -436,7 +432,7 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     text-align: center;
 }
 

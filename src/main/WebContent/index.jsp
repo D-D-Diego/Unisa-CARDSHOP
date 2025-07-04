@@ -21,20 +21,24 @@
         <h2>Esplora le Nostre Categorie</h2>
         <div class="category-grid">
             <a href="products.jsp?category=pokemon" class="category-item">
-                <img src="" alt="Pokemon Cards">
+                <img src="images/pokemon.jpg" alt="Pokemon Cards">
                 <h3>Pokemon</h3>
             </a>
             <a href="products.jsp?category=magic" class="category-item">
-                <img src="" alt="Magic: The Gathering Cards">
+                <img src="images/magic.jpg" alt="Magic: The Gathering Cards">
                 <h3>Magic: The Gathering</h3>
             </a>
             <a href="products.jsp?category=yugioh" class="category-item">
-                <img src="" alt="Yu-Gi-Oh! Cards">
+                <img src="images/yugioh.jpg" alt="Yu-Gi-Oh! Cards">
                 <h3>Yu-Gi-Oh!</h3>
             </a>
-            <a href="products.jsp?category=other" class="category-item">
-                <img src="" alt="Other Cards">
-                <h3>Altro</h3>
+            <a href="products.jsp?category=sport" class="category-item">
+                <img src="images/sport.jpg" alt="Carte Sportive">
+                <h3>Carte Sportive</h3>
+            </a>
+            <a href="products.jsp?category=accessories" class="category-item">
+                <img src="images/accessories.jpg" alt="Accessori">
+                <h3>Accessori</h3>
             </a>
         </div>
     </section>

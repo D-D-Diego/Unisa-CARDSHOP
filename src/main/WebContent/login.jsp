@@ -12,6 +12,7 @@
 <main class="container auth-form-container">
   <div class="auth-form-box">
     <h2>Accedi</h2>
+
     <%
       String registrationStatus = request.getParameter("registration");
       if ("success".equals(registrationStatus)) {
@@ -22,7 +23,25 @@
     <%
       }
     %>
-    <form id="login-form">
+
+    <%
+      String error = request.getParameter("error");
+      if (error != null) {
+        String errorMessage = "";
+        if ("invalid_credentials".equals(error)) {
+          errorMessage = "<strong>Errore:</strong> Email o password non validi.";
+        } else if ("db_error".equals(error)) {
+          errorMessage = "<strong>Si è verificato un errore del server.</strong> Riprova più tardi.";
+        }
+    %>
+    <div class="error-message">
+      <%= errorMessage %>
+    </div><br>
+    <%
+      }
+    %>
+
+    <form id="login-form" action="login" method="post">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
