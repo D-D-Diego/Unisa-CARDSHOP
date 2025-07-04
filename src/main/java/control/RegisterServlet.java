@@ -1,40 +1,60 @@
 package control;
 
-import java.io.*;
-import java.sql.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+import it.unisa.cardshop.model.Utente;
+import it.unisa.cardshop.model.dao.UtenteDAO;
+import it.unisa.cardshop.model.dao.UtenteDAOImp;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        UtenteDAO utenteDAO = new UtenteDAOImp();
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String url = "jdbc:mysql://localhost:3306/gestione_utenti";
-        String user = "root";
-        String dbPassword = "";
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<h2>FILEEEEEEE</h2>");
+        String telefono = request.getParameter("telefono");
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", user, dbPassword);
-            String sql = "INSERT INTO utente (nome, email, password_hash, telefono, indirizzo) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, "nome");
-            stmt.setString(2, email);
-            stmt.setString(3, password);
-            stmt.setString(4, "telefono");
-            stmt.setString(5, "indirizzo");
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            out.println("<h2>Registrazione avvenuta per: " + email + "</h2>");
-        } catch (Exception e) {
+            if (utenteDAO.doRetrieveByEmail(email) != null) {
+                response.sendRedirect("register.jsp?error=email_exists");
+                return;
+            }
+
+            if (utenteDAO.doRetrieveByTelefono(telefono) != null) {
+                response.sendRedirect("register.jsp?error=telefono_exists");
+                return;
+            }
+
+            String nome = request.getParameter("nome");
+            String password = request.getParameter("password");
+            String indirizzo = request.getParameter("indirizzo");
+
+            // DA SOSTITUIRE con una vera funzione di hash
+            String passwordHash = password;
+
+            Utente utente = new Utente();
+            utente.setNome(nome);
+            utente.setEmail(email);
+            utente.setPasswordHash(passwordHash);
+            utente.setTelefono(telefono);
+            utente.setIndirizzo(indirizzo);
+            utente.setAdmin(false);
+
+            utenteDAO.doSave(utente);
+
+            response.sendRedirect("login.jsp?registration=success");
+
+        } catch (SQLException e) {
             e.printStackTrace();
+            response.sendRedirect("register.jsp?error=db_error");
         }
     }
 }
