@@ -667,11 +667,33 @@ main {
     }
 }
 
+
 .hamburger {
     display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
+
 @media (max-width: 768px) {
     .hamburger {
         display: block;
+    }
+
+        .main-nav { display: none; }
+        .main-nav.open { display: block; }
+    .main-nav a {
+        color: var(--primary-color);
+    }
+
+}
+@media (min-width: 769px) {
+    .main-nav {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        position: static;
+        background: none;
     }
 }
