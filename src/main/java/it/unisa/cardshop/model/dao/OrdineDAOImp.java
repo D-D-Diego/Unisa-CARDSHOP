@@ -1,5 +1,4 @@
-package DAOimp;
-import it.unisa.cardshop.model.dao.OrdineDAO;
+package it.unisa.cardshop.model.dao;
 import it.unisa.cardshop.model.Ordine;
 import java.sql.*;
 import java.util.ArrayList;

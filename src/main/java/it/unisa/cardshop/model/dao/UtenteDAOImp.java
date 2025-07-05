@@ -1,7 +1,6 @@
-package DAOimp;
+package it.unisa.cardshop.model.dao;
 
 import it.unisa.cardshop.model.Utente;
-import it.unisa.cardshop.model.dao.UtenteDAO;
 
 import java.sql.*;
 import java.util.ArrayList;

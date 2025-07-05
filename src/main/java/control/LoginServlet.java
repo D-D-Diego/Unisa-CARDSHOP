@@ -2,7 +2,7 @@ package control;
 
 import it.unisa.cardshop.model.Utente;
 import it.unisa.cardshop.model.dao.UtenteDAO;
-import DAOimp.UtenteDAOImp;
+import it.unisa.cardshop.model.dao.UtenteDAOImp;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
