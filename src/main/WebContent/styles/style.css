@@ -313,7 +313,7 @@ main {
 }
 
 .product-info .price {
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: bold;
     color: var(--secondary-color);
     margin-bottom: 20px;
@@ -594,6 +594,10 @@ main {
     }
 
     .product-info p {
+        font-size: 1em;
+    }
+
+    .product-info .desc {
         font-size: 1em;
     }
 

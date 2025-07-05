@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import it.unisa.cardshop.model.dao.ProdottoDAO;
 import it.unisa.cardshop.model.Prodotto;
-import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/products")
@@ -15,7 +14,7 @@ public class ProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException{
         ProdottoDAO p = new ProdottoDAOImp();
         try {
             List<Prodotto> prodotti = p.doRetrieveAll();
