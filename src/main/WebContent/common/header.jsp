@@ -22,7 +22,7 @@
                     Utente utente = (Utente) session.getAttribute("utente");
                     if (utente != null) {
                 %>
-                <li><a href=".profilo.jsp">Profilo</a></li>
+                <li><a href="profilo.jsp">Profilo</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                 <%
                 } else {
