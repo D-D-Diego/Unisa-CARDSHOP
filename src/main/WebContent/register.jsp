@@ -18,6 +18,7 @@
             <div class="form-group">
                 <label for="reg-email">Email:</label>
                 <input type="email" id="reg-email" name="email" required>
+                <span id="email-error" class="field-error"></span>
             </div>
             <div class="form-group">
                 <label for="reg-password">Password:</label>
@@ -26,6 +27,7 @@
             <div class="form-group">
                 <label for="reg-telefono">Telefono:</label>
                 <input type="tel" id="reg-telefono" name="telefono" required>
+                <span id="telefono-error" class="field-error"></span>
             </div>
             <div class="form-group">
                 <label for="reg-indirizzo">Indirizzo di Spedizione:</label>
@@ -39,14 +41,7 @@
             if (error != null) {
                 String errorMessage = "";
                 switch (error) {
-                    case "email_exists":
-                        errorMessage = "<strong>Errore:</strong> L'indirizzo email inserito è già in uso.";
-                        break;
-                    case "telefono_exists":
-                        errorMessage = "<strong>Errore:</strong> Il numero di telefono inserito è già in uso.";
-                        break;
                     case "db_error":
-                    default:
                         errorMessage = "<strong>Si è verificato un errore imprevisto.</strong> Riprova più tardi.";
                         break;
                 }
@@ -61,5 +56,6 @@
 </main>
 
 <%@include file="common/footer.jspf"%>
+<script src="${pageContext.request.contextPath}/scripts/RegistrationValidator.js"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburgerBtn');
     const nav = document.querySelector('.main-nav');
@@ -9,3 +7,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
