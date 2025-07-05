@@ -17,6 +17,6 @@
 </main>
 
 <%@include file="common/footer.jsp"%>
-
+<script src="js/main.js"></script>
 </body>
 </html>
