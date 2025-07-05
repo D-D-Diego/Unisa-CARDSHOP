@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
 
     @Override
-    public void doSave(DettaglioOrdine dettaglio) throws SQLException {
+    public synchronized void doSave(DettaglioOrdine dettaglio) throws SQLException {
         String sql = "INSERT INTO dettaglioordine (ordine_id, prodotto_id, quantita, prezzo_unitario, indirizzo, CAP) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {

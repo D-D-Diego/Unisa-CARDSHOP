@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CategoriaDAOImp implements CategoriaDAO {
     @Override
-    public void doSave(Categoria categoria) throws SQLException {
+    public synchronized void doSave(Categoria categoria) throws SQLException {
         String sql = "INSERT INTO categoria (nome) VALUES (?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

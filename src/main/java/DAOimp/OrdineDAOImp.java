@@ -9,7 +9,7 @@ import java.util.List;
 public class OrdineDAOImp implements OrdineDAO {
 
     @Override
-    public void doSave(Ordine ordine) throws SQLException {
+    public synchronized void doSave(Ordine ordine) throws SQLException {
         String sql = "INSERT INTO ordine (cliente_id, data_ordine, totale) VALUES (?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();

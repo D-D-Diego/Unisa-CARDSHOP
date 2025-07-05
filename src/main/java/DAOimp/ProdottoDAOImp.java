@@ -8,7 +8,7 @@ import it.unisa.cardshop.model.dao.ProdottoDAO;
 public class ProdottoDAOImp implements ProdottoDAO {
 
     @Override
-    public void doSave(Prodotto prodotto) throws SQLException {
+    public synchronized void doSave(Prodotto prodotto) throws SQLException {
         String sql = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, categoria_id) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

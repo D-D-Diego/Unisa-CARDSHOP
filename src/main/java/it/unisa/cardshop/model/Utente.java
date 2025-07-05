@@ -7,17 +7,18 @@ public class Utente {
     private String passwordHash;
     private String telefono;
     private String indirizzo;
-    private boolean isAdmin;
+    private boolean is_admin;
 
     public Utente() {}
 
-    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo, boolean isAdmin) {
+    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo, boolean is_admin) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.passwordHash = passwordHash;
         this.telefono = telefono;
         this.indirizzo = indirizzo;
+        this.is_admin = is_admin;
     }
 
     public int getId() {
@@ -50,6 +51,6 @@ public class Utente {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
-    public boolean isAdmin() { return isAdmin; }
-    public void setAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
+    public boolean isAdmin() { return is_admin; }
+    public void setAdmin(boolean isAdmin) { this.is_admin = isAdmin; }
 }
