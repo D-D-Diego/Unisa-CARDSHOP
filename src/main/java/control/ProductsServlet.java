@@ -12,15 +12,11 @@ import java.util.List;
 
 @WebServlet("/products")
 public class ProductsServlet extends HttpServlet {
-    private ProdottoDAO p;
 
     @Override
-    public void init() {
-        p = new ProdottoDAOImp();
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ProdottoDAO p = new ProdottoDAOImp();
         try {
             List<Prodotto> prodotti = p.doRetrieveAll();
             request.setAttribute("products", prodotti);
