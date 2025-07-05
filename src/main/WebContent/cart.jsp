@@ -19,7 +19,5 @@
 </main>
 
 <%@ include file="common/footer.jspf" %>
-<script src="js/main.js"></script>
-
 </body>
 </html>

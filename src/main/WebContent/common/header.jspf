@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css">
+    <link href="scripts/main.js" type="text/javascript">
 </head>
 <body>
 <header class="main-header">
@@ -47,7 +48,6 @@
         </nav>
     </div>
 </header>
-<script src="../js/main.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const hamburger = document.getElementById('hamburgerBtn');
