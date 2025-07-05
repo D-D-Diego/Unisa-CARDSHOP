@@ -1,5 +1,4 @@
-package DAOimp;
-import it.unisa.cardshop.model.dao.DettaglioOrdineDAO;
+package it.unisa.cardshop.model.dao;
 import it.unisa.cardshop.model.DettaglioOrdine;
 import java.sql.*;
 import java.util.List;

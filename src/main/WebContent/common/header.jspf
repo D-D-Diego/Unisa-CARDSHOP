@@ -1,6 +1,11 @@
 <%@ page import="it.unisa.cardshop.model.Utente" %>
 <!DOCTYPE html>
 <html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
 <body>
 <header class="main-header">
     <div class="container">
@@ -16,18 +21,18 @@
 
         <nav class="main-nav">
             <ul>
-                <li><a href="products.jsp">Prodotti</a></li>
-                <li><a href="cart.jsp">Carrello</a></li>
+                <li><a href="${pageContext.request.contextPath}/products.jsp">Prodotti</a></li>
+                <li><a href="${pageContext.request.contextPath}/cart.jsp">Carrello</a></li>
                 <%
                     Utente utente = (Utente) session.getAttribute("utente");
                     if (utente != null) {
                 %>
-                <li><a href=".profilo.jsp">Profilo</a></li>
+                <li><a href="${pageContext.request.contextPath}/profilo.jsp">Profilo</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                 <%
                 } else {
                 %>
-                <li><a href="login.jsp">Login</a></li>
+                <li><a href="${pageContext.request.contextPath}/login.jsp">Login</a></li>
                 <%
                     }
                 %>

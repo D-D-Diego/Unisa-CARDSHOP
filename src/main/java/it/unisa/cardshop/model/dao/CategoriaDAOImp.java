@@ -1,5 +1,4 @@
-package DAOimp;
-import it.unisa.cardshop.model.dao.CategoriaDAO;
+package it.unisa.cardshop.model.dao;
 import it.unisa.cardshop.model.Categoria;
 import java.sql.*;
 import java.util.List;

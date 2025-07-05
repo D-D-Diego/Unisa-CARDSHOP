@@ -1,8 +1,7 @@
-package DAOimp;
+package it.unisa.cardshop.model.dao;
 import java.sql.*;
 import java.util.*;
 import it.unisa.cardshop.model.Prodotto;
-import it.unisa.cardshop.model.dao.ProdottoDAO;
 
 
 public class ProdottoDAOImp implements ProdottoDAO {

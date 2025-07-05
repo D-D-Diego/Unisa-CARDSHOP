@@ -1,4 +1,4 @@
-package DAOimp;
+package it.unisa.cardshop.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

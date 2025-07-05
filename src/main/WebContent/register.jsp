@@ -2,12 +2,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
     <title>Registrati - Unisa-Cardshop</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%@include file="common/header.jsp"%>
+<%@include file="common/header.jspf"%>
 
 <main class="container auth-form-container">
     <div class="auth-form-box">
@@ -62,7 +60,7 @@
     </div>
 </main>
 
-<%@include file="common/footer.jsp"%>
+<%@include file="common/footer.jspf"%>
 
 </body>
 </html>
