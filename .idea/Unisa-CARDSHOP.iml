@@ -25,23 +25,20 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://C:/apache-tomcat-10.1.42/lib" />
+          <root url="jar://$USER_HOME$/Desktop/Tomcat/apache-tomcat-10.1.42/lib/servlet-api.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://C:/apache-tomcat-10.1.42/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-j-9.3.0" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/jbcrypt-0.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jbcrypt-0.4" level="project" />
   </component>
 </module>
