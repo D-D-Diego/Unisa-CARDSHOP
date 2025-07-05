@@ -1,13 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/style.css">
     <title>Dashboard Admin</title>
 </head>
 <body>
-<%@ include file="../../common/header.jsp" %>
+<%@ include file="../../common/header.jspf" %>
 <main class="container admin-dashboard">
     <h1>Pannello di Controllo Amministratore</h1>
     <div class="dashboard-cards">
@@ -45,6 +42,6 @@
         </div>
     </div>
 </main>
-<%@ include file="../../common/footer.jsp" %>
+<%@ include file="../../common/footer.jspf" %>
 </body>
 </html>

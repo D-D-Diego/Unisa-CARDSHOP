@@ -2,13 +2,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unisa-Cardshop - La tua destinazione per carte collezionabili</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%@ include file="common/header.jsp" %>
+<%@ include file="common/header.jspf" %>
 
 <title>Informativa sulla Privacy - Unisa-Cardshop</title>
 
@@ -38,7 +35,7 @@
     <p>Se hai domande o commenti su questa Informativa sulla Privacy, ti preghiamo di contattarci a: privacy@unisa-cardshop.com</p>
 </main>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="common/footer.jspf" %>
 
 </body>
 </html>

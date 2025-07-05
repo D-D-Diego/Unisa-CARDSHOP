@@ -2,13 +2,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accedi - Unisa-Cardshop</title>
-  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<%@include file="common/header.jsp"%>
+<%@include file="common/header.jspf"%>
 <main class="container auth-form-container">
   <div class="auth-form-box">
     <h2>Accedi</h2>
@@ -56,7 +53,7 @@
   </div>
 </main>
 
-<%@include file="common/footer.jsp"%>
+<%@include file="common/footer.jspf"%>
 <script src="js/main.js"></script>
 </body>
 </html>
