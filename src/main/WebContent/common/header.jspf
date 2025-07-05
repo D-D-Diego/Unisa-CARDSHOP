@@ -22,7 +22,7 @@
 
         <nav class="main-nav">
             <ul>
-                <li><a href="${pageContext.request.contextPath}/products.jsp">Prodotti</a></li>
+                <li><a href="${pageContext.request.contextPath}/products">Prodotti</a></li>
                 <li><a href="${pageContext.request.contextPath}/cart.jsp">Carrello</a></li>
                 <%
                     Utente utente = (Utente) session.getAttribute("utente");
