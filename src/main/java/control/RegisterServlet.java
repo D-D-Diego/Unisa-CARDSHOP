@@ -3,6 +3,7 @@ package control;
 import it.unisa.cardshop.model.Utente;
 import it.unisa.cardshop.model.dao.UtenteDAO;
 import it.unisa.cardshop.model.dao.UtenteDAOImp;
+import org.mindrot.jbcrypt.BCrypt;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,8 +38,8 @@ public class RegisterServlet extends HttpServlet {
             String password = request.getParameter("password");
             String indirizzo = request.getParameter("indirizzo");
 
-            // DA SOSTITUIRE con una vera funzione di hash
-            String passwordHash = password;
+            String salt = BCrypt.gensalt(12); // (workload) "lentezza"
+            String passwordHash = BCrypt.hashpw(password, salt);
 
             Utente utente = new Utente();
             utente.setNome(nome);
