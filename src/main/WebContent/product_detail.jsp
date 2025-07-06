@@ -10,12 +10,12 @@
 
 <main class="container product-detail-section">
   <%
-    // Controlla se il prodotto è stato trovato
     if (prodotto != null) {
   %>
-  <div class="product-detail-grid">
+
+    <div class="product-detail-grid">
     <div class="product-detail-image">
-      <img src="https://placehold.co/400x400?text=<%= prodotto.getNome() %>" alt="Immagine di <%= prodotto.getNome() %>">
+      <img src="ImageServlet?id=<%= prodotto.getId() %>"  alt="Immagine di <%= prodotto.getNome() %>">
     </div>
     <div class="product-info">
       <h2><%= prodotto.getNome() %></h2>
@@ -32,13 +32,13 @@
       </form>
     </div>
   </div>
-  <%
-  } else {
-  %>
-  <p>Prodotto non trovato.</p>
-  <%
-    } // Fine del blocco else
-  %>
+
+    } else {
+
+    <p>Prodotto non trovato.</p>
+
+  <%  }
+%>
 </main>
 
 <%@ include file="common/footer.jspf" %>
