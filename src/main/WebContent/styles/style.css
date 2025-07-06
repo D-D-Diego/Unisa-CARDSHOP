@@ -1,8 +1,6 @@
-/* css/style.css */
-
-/* CSS HEX */
-
-/* Stili Globali */
+/* ==========================================================================
+   1. Stili Globali e Variabili
+   ========================================================================== */
 :root {
     --primary-color: #fb8500ff; /* Arancione */
     --secondary-color: #10b981; /* Verde */
@@ -10,7 +8,6 @@
     --light-color: #f3f4f6; /* Grigio chiaro */
     --text-color: #374151; /* Testo grigio */
     --border-color: #e5e7eb;
-    /* Nuovi colori */
     --mountbatten-pink: #81717aff;
     --blue-green: #219ebcff;
 }
@@ -42,6 +39,9 @@ a:hover {
     text-decoration: underline;
 }
 
+/* ==========================================================================
+   2. Componenti Comuni (Bottoni, Messaggi di Notifica)
+   ========================================================================== */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -49,12 +49,12 @@ a:hover {
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border: none;
 }
 
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
-    border: none;
 }
 
 .btn-primary:hover {
@@ -64,14 +64,45 @@ a:hover {
 .btn-success {
     background-color: var(--secondary-color);
     color: #fff;
-    border: none;
 }
 
 .btn-success:hover {
     background-color: #059669;
 }
 
-/* Header */
+.success-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-align: center;
+}
+
+.error-message {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    text-align: center;
+}
+
+.field-error {
+    color: #721c24;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   3. Layout Principale (Header, Main, Footer)
+   ========================================================================== */
 .main-header {
     background-color: var(--dark-color);
     color: #fff;
@@ -84,6 +115,27 @@ a:hover {
     justify-content: space-between;
 }
 
+main {
+    flex-grow: 1;
+    padding: 40px 0;
+}
+
+.main-footer {
+    background-color: var(--dark-color);
+    color: #fff;
+    padding: 20px 0;
+    margin-top: auto;
+    text-align: center;
+}
+
+.main-footer .footer-links a {
+    color: #fff;
+    margin: 0 10px;
+}
+
+/* ==========================================================================
+   4. Stili Header (Logo, Navigazione, Ricerca, Hamburger)
+   ========================================================================== */
 .logo-group {
     display: flex;
     align-items: center;
@@ -134,7 +186,6 @@ a:hover {
     text-decoration: none;
 }
 
-/* Stili per la barra di ricerca */
 .search-bar {
     display: flex;
     flex-grow: 1;
@@ -166,7 +217,7 @@ a:hover {
     background-color: var(--primary-color);
     color: white;
     cursor: pointer;
-    border-radius: 0 5px 5px 0; /* Angoli arrotondati solo a destra */
+    border-radius: 0 5px 5px 0;
     font-size: 1em;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -176,28 +227,20 @@ a:hover {
 }
 
 .search-bar button:hover {
-    background-color: #e67300; /* Un arancione leggermente più scuro */
+    background-color: #e67300;
 }
 
-/* Footer */
-.main-footer {
-    background-color: var(--dark-color);
-    color: #fff;
-    padding: 20px 0;
-    margin-top: auto; /* Spinge il footer in fondo alla pagina */
-    text-align: center;
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.main-footer .footer-links a {
-    color: #fff;
-    margin: 0 10px;
-}
-
-/* Sezioni della Pagina */
-main {
-    flex-grow: 1; /* Permette al contenuto principale di espandersi */
-    padding: 40px 0;
-}
+/* ==========================================================================
+   5. Stili Contenuti Specifici (Titoli, Griglie, Form)
+   ========================================================================== */
 
 .page-title {
     text-align: center;
@@ -206,22 +249,7 @@ main {
     color: var(--dark-color);
 }
 
-/* Hero Section (Homepage) */
-.hero-section {
-    padding-top: 20px;
-}
-
-.featured-products, .categories-preview {
-    margin-bottom: 60px;
-}
-
-.featured-products h2, .categories-preview h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: var(--dark-color);
-}
-
+/* --- Griglie Prodotti e Categorie --- */
 .product-grid, .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -248,7 +276,7 @@ main {
 
 .product-card img, .category-item img {
     max-width: 100%;
-    height: 200px; /* Altezza fissa per le immagini */
+    height: 200px;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -275,14 +303,10 @@ main {
 
 .product-card .btn {
     width: 100%;
-    margin-top: auto; /* Spinge il bottone in basso */
+    margin-top: auto;
 }
 
-/* Product Detail Page */
-.product-detail-section {
-    padding-top: 40px;
-}
-
+/* --- Dettaglio Prodotto --- */
 .product-detail-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -291,12 +315,6 @@ main {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (min-width: 768px) {
-    .product-detail-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 .product-detail-image img {
@@ -340,7 +358,7 @@ main {
     text-align: center;
 }
 
-/* Cart Page */
+/* --- Pagina Carrello --- */
 .cart-items-container {
     background-color: #fff;
     border-radius: 8px;
@@ -418,12 +436,12 @@ main {
     padding: 12px 25px;
 }
 
-/* Auth Forms (Login/Register) */
+/* --- Form di Autenticazione --- */
 .auth-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 150px); /* Regola in base ad header/footer */
+    min-height: calc(100vh - 150px);
 }
 
 .auth-form-box {
@@ -460,7 +478,7 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 1em;
-    box-sizing: border-box; /* Include padding e border nella larghezza */
+    box-sizing: border-box;
 }
 
 .form-group input:focus {
@@ -481,210 +499,64 @@ main {
     font-size: 0.9em;
 }
 
-.success-message {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    text-align: center;
-}
 
-.error-message {
-    padding: 15px;
-    margin-top: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    text-align: center;
-}
+/* ==========================================================================
+   6. Design Responsive (Unico Blocco Ordinato)
+   ========================================================================== */
 
-/* Responsive adjustments */
+/* Stili per Tablet (e schermi più piccoli di 768px) */
 @media (max-width: 768px) {
-    .main-header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .page-title {
-        font-size: 2em;
-    }
-
-    .product-grid, .category-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .main-header .container, .main-footer .container {
-        padding: 0 15px;
-    }
-
-    .logo a {
-        font-size: 1.8em;
-    }
-
-    .main-nav ul {
-        gap: 10px;
-    }
-
-    .product-card {
-        padding: 15px;
-    }
-    .product-card img {
-        height: 180px;
-    }
-
-    .product-detail-grid {
-        padding: 20px;
-    }
-
-    .product-info h2 {
-        font-size: 2em;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .cart-item img {
-        margin-bottom: 10px;
-    }
-    .cart-item-actions {
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-header .container,
-    .main-footer .container {
-        padding: 0 15px;
-    }
-
-    .logo a {
-        font-size: 1.6em;
-    }
-
-    .main-nav ul {
-        gap: 6px;
-    }
-
-    .product-card {
-        padding: 15px;
-    }
-
-    .product-card img {
-        height: auto;
-        max-height: 160px;
-    }
-
-    .product-info h2 {
-        font-size: 1.6em;
-    }
-
-    .product-info p {
-        font-size: 1em;
-    }
-
-    .product-info .desc {
-        font-size: 1em;
-    }
-
-    .product-detail-grid {
-        padding: 15px;
-        gap: 20px;
-    }
-
-    .auth-form-box {
-        padding: 25px 20px;
-    }
-
-    .form-group input {
-        padding: 10px;
-        font-size: 1em;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-item img {
-        margin-bottom: 10px;
-        width: 100%;
-        max-width: 200px;
-    }
-
-    .cart-item-actions {
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-
-    .cart-summary {
-        font-size: 1.2em;
-    }
-
-    .cart-summary .btn {
-        font-size: 1em;
-        padding: 12px 20px;
-    }
-
-    .btn {
-        font-size: 1em;
-        padding: 12px 20px;
-    }
-}
-
-@media (max-width: 768px) {
+    /* Header */
     .main-header .container {
         flex-direction: column;
         gap: 15px;
         padding: 10px 20px;
         text-align: center;
     }
-
     .main-nav ul {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
+    .hamburger {
+        display: block;
+    }
+    .main-nav {
+        display: none;
+    }
+    .main-nav.open {
+        display: block;
+    }
+    .main-nav a {
+        color: var(--primary-color);
+    }
 
+    /* Titoli */
     .page-title {
         font-size: 2em;
         padding: 0 10px;
     }
 
+    /* Griglie */
     .product-grid,
     .category-grid {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 20px;
     }
 
+    /* Card Prodotti */
     .product-card h3 {
         font-size: 1.2em;
     }
-
     .product-card p {
         font-size: 0.85em;
     }
-
     .btn {
         font-size: 1em;
         padding: 10px 16px;
     }
 
+    /* Input */
     input[type="number"],
     input[type="text"] {
         padding: 10px;
@@ -692,41 +564,52 @@ main {
     }
 }
 
-
-.hamburger {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
+/* Stili per Smartphone (e schermi più piccoli di 480px) */
+@media (max-width: 480px) {
+    /* Header e Footer */
+    .main-header .container,
+    .main-footer .container {
+        padding: 0 15px;
+    }
+    .logo a {
+        font-size: 1.8em;
+    }
+    .main-nav ul {
+        gap: 6px;
     }
 
-        .main-nav { display: none; }
-        .main-nav.open { display: block; }
-    .main-nav a {
-        color: var(--primary-color);
+    /* Card Prodotti */
+    .product-card {
+        padding: 15px;
+    }
+    .product-card img {
+        height: 180px;
     }
 
-}
-@media (min-width: 769px) {
-    .main-nav {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        position: static;
-        background: none;
+    /* Dettaglio Prodotto */
+    .product-detail-grid {
+        padding: 20px;
     }
-}
+    .product-info h2 {
+        font-size: 2em;
+    }
 
-.field-error {
-    color: #721c24;
-    font-size: 0.9em;
-    font-weight: bold;
-    display: block;
-    margin-top: 5px;
+    /* Carrello */
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cart-item img {
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .cart-summary {
+        font-size: 1.2em;
+    }
 }
