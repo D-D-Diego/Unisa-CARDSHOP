@@ -10,12 +10,12 @@
 
 <main class="container product-detail-section">
   <%
-
+    // Controlla se il prodotto è stato trovato
     if (prodotto != null) {
   %>
   <div class="product-detail-grid">
     <div class="product-detail-image">
-      <img src="image?id=${prodotto.id}" alt="Immagine di ${prodotto.nome}" style="max-width:300px;">
+      <img src="https://placehold.co/400x400?text=<%= prodotto.getNome() %>" alt="Immagine di <%= prodotto.getNome() %>">
     </div>
     <div class="product-info">
       <h2><%= prodotto.getNome() %></h2>
@@ -37,7 +37,7 @@
   %>
   <p>Prodotto non trovato.</p>
   <%
-    }
+    } // Fine del blocco else
   %>
 </main>
 
