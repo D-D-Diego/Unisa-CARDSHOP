@@ -28,7 +28,6 @@ public class ProductDetailServlet extends HttpServlet {
         ProdottoDAO prodottoDAO = new ProdottoDAOImp();
         try {
             Prodotto prodotto = prodottoDAO.doRetrieveByKey(prodottoId);
-
             if (prodotto == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Prodotto non trovato.");
                 return;
