@@ -93,4 +93,6 @@ public class ProdottoDAOImp implements ProdottoDAO {
         stmt.setDisponibile(quantita > 0);
         return stmt;
     }
+
+
 }

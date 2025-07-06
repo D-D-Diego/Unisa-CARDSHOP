@@ -11,7 +11,8 @@ public class Prodotto {
     private int quantita;
     private int categoriaId;
     private boolean isDisponibile;
-
+    private String specifiche;
+    private byte[] foto;
     public Prodotto() {}
 
     public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId, boolean isDisponibile) {
@@ -59,4 +60,8 @@ public class Prodotto {
     }
     public boolean isDisponibile() { return isDisponibile;}
     public void setDisponibile(boolean isDisponibile) { this.isDisponibile = isDisponibile;}
+    public void setSpecifiche(String specifiche){this.specifiche=specifiche;}
+    public String getSpecifiche(){return this.specifiche;}
+    public void setFoto(byte[] foto) {this.foto = foto;}
+    public byte[] getFoto() {return this.foto;}
 }
