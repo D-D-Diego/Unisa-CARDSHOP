@@ -15,14 +15,14 @@ public class Carrello {
     }
 
     public void aggiungiArticolo(Prodotto prodotto, int quantita) {
-        // Controlla se il prodotto è già nel carrello
+        // Controlla se il prodotto è già nel carrello per aggiornare la quantità
         for (ArticoloCarrello articolo : articoli) {
             if (articolo.getProdotto().getId() == prodotto.getId()) {
                 articolo.setQuantita(articolo.getQuantita() + quantita);
                 return;
             }
         }
-        // Se non è presente, aggiunge un nuovo articolo
+        // Altrimenti, aggiunge un nuovo articolo
         articoli.add(new ArticoloCarrello(prodotto, quantita));
     }
 
@@ -31,20 +31,16 @@ public class Carrello {
     }
 
     public void aggiornaQuantita(int prodottoId, int nuovaQuantita) {
+        if (nuovaQuantita <= 0) {
+            rimuoviArticolo(prodottoId);
+            return;
+        }
         for (ArticoloCarrello articolo : articoli) {
             if (articolo.getProdotto().getId() == prodottoId) {
-                if (nuovaQuantita > 0) {
-                    articolo.setQuantita(nuovaQuantita);
-                } else {
-                    rimuoviArticolo(prodottoId);
-                }
+                articolo.setQuantita(nuovaQuantita);
                 return;
             }
         }
-    }
-
-    public void svuotaCarrello() {
-        articoli.clear();
     }
 
     public double getTotaleComplessivo() {
