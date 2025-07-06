@@ -37,7 +37,7 @@ public class UtenteDAOImp implements UtenteDAO {
             preparedStatement.setString(4, utente.getTelefono());
             preparedStatement.setString(5, utente.getIndirizzo());
             preparedStatement.setBoolean(6, utente.isAdmin());
-
+            System.out.println("utente.isAdmin() = " + utente.isAdmin()); // Debugging line to check if isAdmin is set correctly
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

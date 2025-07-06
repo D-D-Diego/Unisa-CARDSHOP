@@ -26,6 +26,43 @@ public class ProdottoDAOImp implements ProdottoDAO {
     }
 
     @Override
+    public List<Prodotto> doRetrieveByCategoria(int categoriaId) throws SQLException {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        List<Prodotto> prodotti = new ArrayList<>();
+
+        String selectSQL = "SELECT * FROM prodotto WHERE categoria_id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, categoriaId);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                prodotti.add(extractProdottoFromResultSet(rs));
+            }
+        } finally {
+            if (rs != null) rs.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return prodotti;
+    }
+
+    private Prodotto extractProdottoFromResultSet(ResultSet rs) throws SQLException {
+        Prodotto prodotto = new Prodotto();
+        prodotto.setId(rs.getInt("id"));
+        prodotto.setNome(rs.getString("nome"));
+        prodotto.setDescrizione(rs.getString("descrizione"));
+        prodotto.setPrezzo(rs.getDouble("prezzo"));
+        prodotto.setQuantita(rs.getInt("quantita"));
+        prodotto.setCategoriaId(rs.getInt("categoria_id"));
+        prodotto.setDisponibile(rs.getInt("quantita") > 0);
+        return prodotto;
+    }
+
+    @Override
     public Prodotto doRetrieveByKey(int id) throws SQLException {
         String sql = "SELECT id, nome, descrizione, prezzo, quantita, categoria_id FROM prodotto WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();

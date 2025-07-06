@@ -1,5 +1,7 @@
 <%@ page import="it.unisa.cardshop.model.Prodotto" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@
   <%
     @SuppressWarnings("unchecked")
     List<Prodotto> products = (List<Prodotto>) request.getAttribute("products");
-
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
     if (products == null || products.isEmpty()) {
   %>
   <p style="text-align: center;">Nessun prodotto disponibile al momento.</p>
@@ -36,7 +38,7 @@
         <h3><%= prodotto.getNome() %></h3>
       </a>
 
-      <p class="price">€ <%= String.format("%.2f", prodotto.getPrezzo()) %></p>
+      <p class="price"><%= currencyFormatter.format(prodotto.getPrezzo()) %></p>
 
       <form action="aggiungi-al-carrello" method="post">
         <input type="hidden" name="prodottoId" value="<%= prodotto.getId() %>">
