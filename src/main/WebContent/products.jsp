@@ -23,12 +23,13 @@
   <%
   } else {
   %>
-  <%-- Questo è il contenitore che il CSS trasformerà in una griglia --%>
+
   <div class="product-grid">
     <%
       for (Prodotto prodotto : products) {
+        if(prodotto.getQuantita()>0){
     %>
-    <%-- Questa è la "card" del singolo prodotto, una cella della griglia --%>
+
     <div class="product-card">
 
       <a href="dettaglio-prodotto?id=<%= prodotto.getId() %>">
@@ -44,11 +45,11 @@
       </form>
     </div>
     <%
-      } // Fine del ciclo for
+      } }
     %>
   </div>
   <%
-    } // Fine del blocco else
+    }
   %>
 </main>
 
