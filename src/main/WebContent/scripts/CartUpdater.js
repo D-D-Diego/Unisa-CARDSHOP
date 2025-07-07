@@ -1,42 +1,43 @@
+// Aspetta che tutta la pagina sia caricata prima di eseguire lo script.
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.cart-item-quantity').forEach(input => {
+
+    // Seleziona TUTTI i campi di input per la quantità usando la loro classe comune.
+    const quantityInputs = document.querySelectorAll('.cart-item-quantity');
+
+    // Per ognuno di questi input...
+    quantityInputs.forEach(function(input) {
+
+        // ...aggiungi un "ascoltatore" che si attiva all'evento "change".
         input.addEventListener('change', function() {
-            const prodottoId = this.dataset.prodottoId;
-            let quantita = parseInt(this.value);
-            const maxQuantita = parseInt(this.max);
 
-            if (quantita > maxQuantita) {
-                alert('La quantità richiesta non è disponibile. Verrà impostata la massima quantità possibile.');
-                quantita = maxQuantita;
-                this.value = quantita;
-            }
+            // Crea un form invisibile per inviare i dati di aggiornamento.
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = 'gestione-carrello';
 
-            const formData = new URLSearchParams();
-            formData.append('azione', 'aggiorna');
-            formData.append('prodottoId', prodottoId);
-            formData.append('quantita', quantita);
-            formData.append('ajax', 'true');
+            // Aggiunge i campi necessari al form.
+            const azioneInput = document.createElement('input');
+            azioneInput.type = 'hidden';
+            azioneInput.name = 'azione';
+            azioneInput.value = 'aggiorna';
+            form.appendChild(azioneInput);
 
-            fetch('gestione-carrello', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (quantita <= 0) {
-                        window.location.reload();
-                        return;
-                    }
-                    const subtotaleContainer = document.getElementById('subtotale-container-' + prodottoId);
-                    const totaleContainer = document.getElementById('cart-total-container');
-                    if (subtotaleContainer) {
-                        subtotaleContainer.innerHTML = 'Subtotale: <strong>€ ' + data.subtotaleArticolo.toFixed(2) + '</strong>';
-                    }
-                    if (totaleContainer) {
-                        totaleContainer.innerHTML = 'Totale: <strong>€ ' + data.totaleCarrello.toFixed(2) + '</strong>';
-                    }
-                })
-                .catch(error => console.error('Errore:', error));
+            const prodottoIdInput = document.createElement('input');
+            prodottoIdInput.type = 'hidden';
+            prodottoIdInput.name = 'prodottoId';
+            // Usa l'attributo data-* dell'input per recuperare l'ID del prodotto.
+            prodottoIdInput.value = this.dataset.prodottoId;
+            form.appendChild(prodottoIdInput);
+
+            const quantitaInput = document.createElement('input');
+            quantitaInput.type = 'hidden';
+            quantitaInput.name = 'quantita';
+            quantitaInput.value = this.value; // Usa il nuovo valore dell'input.
+            form.appendChild(quantitaInput);
+
+            // Aggiunge il form alla pagina e lo invia, causando il ricaricamento.
+            document.body.appendChild(form);
+            form.submit();
         });
     });
 });

@@ -14,6 +14,7 @@
 <head>
     <title>Il Tuo Carrello - Unisa-Cardshop</title>
 </head>
+<script src="${pageContext.request.contextPath}/scripts/CartUpdater.js"></script>
 <body>
 <%@ include file="common/header.jspf" %>
 
@@ -70,6 +71,5 @@
 </main>
 
 <%@ include file="common/footer.jspf" %>
-<script src="${pageContext.request.contextPath}/scripts/CartUpdater.js"></script>
 </body>
 </html>
