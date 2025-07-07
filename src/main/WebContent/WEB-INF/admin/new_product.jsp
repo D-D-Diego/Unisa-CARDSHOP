@@ -12,7 +12,7 @@
         <div class="logo"><a href="#">CardShop Admin</a></div>
     </div>
 </header>
-
+<%@ include file="../../common/header.jspf" %>
 <main>
     <div class="container auth-form-box">
         <h2>Aggiungi Nuovo Prodotto</h2>
@@ -67,10 +67,6 @@
     </div>
 </main>
 
-<footer class="main-footer">
-    <div class="container">
-        <p>&copy; 2025 CardShop. Tutti i diritti riservati.</p>
-    </div>
-</footer>
+<%@ include file="../../common/footer.jspf" %>
 </body>
 </html>

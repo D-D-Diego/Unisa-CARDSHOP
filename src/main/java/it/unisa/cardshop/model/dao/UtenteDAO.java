@@ -12,5 +12,4 @@ public interface UtenteDAO {
     void doUpdate(Utente utente) throws SQLException;
     void doDelete(int id) throws SQLException;
     void updatePassword(Utente utente) throws SQLException;
-
 }

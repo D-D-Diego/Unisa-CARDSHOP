@@ -33,7 +33,7 @@
         <div class="card">
             <h2>Nuovo prodotto</h2>
             <p>Aggiungi un nuovo prodotto al catalogo</p>
-            <a href="New_Product.jsp" class="btn btn-primary">Aggiungi prodotto</a>
+            <a href="${pageContext.request.contextPath}/admin/new_product.jsp" class="btn btn-primary">Aggiungi prodotto</a>
         </div>
         <div class="card">
             <h2>Supporto Clienti</h2>
