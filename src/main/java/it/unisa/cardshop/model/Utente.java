@@ -7,6 +7,7 @@ public class Utente {
     private String passwordHash;
     private String telefono;
     private String indirizzo;
+    private int cap;
     private boolean is_admin;
 
     public Utente() {}
@@ -51,6 +52,8 @@ public class Utente {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
+    public int getCap() { return cap;}
+    public void setCap(int cap) { this.cap = cap;}
     public boolean isAdmin() { return is_admin; }
     public void setAdmin(boolean isAdmin) { this.is_admin = isAdmin; }
 }

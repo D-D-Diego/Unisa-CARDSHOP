@@ -55,7 +55,6 @@
         if (hamburger && nav) {
             hamburger.addEventListener('click', function() {
                 nav.classList.toggle('open');
-                // Test visivo
             });
         }
     });

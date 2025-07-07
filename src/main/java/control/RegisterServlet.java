@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
             String nome = request.getParameter("nome");
             String password = request.getParameter("password");
             String indirizzo = request.getParameter("indirizzo");
+            String cap = request.getParameter("cap");
 
             String salt = BCrypt.gensalt(12); // (workload) "lentezza"
             String passwordHash = BCrypt.hashpw(password, salt);
@@ -47,6 +48,7 @@ public class RegisterServlet extends HttpServlet {
             utente.setPasswordHash(passwordHash);
             utente.setTelefono(telefono);
             utente.setIndirizzo(indirizzo);
+            utente.setCap(Integer.parseInt(cap));
             utente.setAdmin(false);
 
             utenteDAO.doSave(utente);
