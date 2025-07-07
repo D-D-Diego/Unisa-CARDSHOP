@@ -10,7 +10,6 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
     @Override
     public synchronized void doSave(DettaglioOrdine dettaglio) throws SQLException {
         Connection connection = null;
-        PreparedStatement preparedStatement = null;
         try {
             connection = DBConnection.getConnection();
             doSave(dettaglio, connection);

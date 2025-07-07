@@ -499,6 +499,48 @@ main {
     font-size: 0.9em;
 }
 
+/* --- Checkout --- */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Colonna sinistra più grande della destra */
+    gap: 30px;
+}
+
+.checkout-box, .order-summary-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.checkout-box h3, .order-summary-box h3 {
+    margin-top: 0;
+    color: var(--dark-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.summary-item, .summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-total {
+    font-size: 1.2em;
+    padding-top: 10px;
+}
 
 /* ==========================================================================
    6. Design Responsive (Unico Blocco Ordinato)
