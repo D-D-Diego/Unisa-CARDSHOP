@@ -1,42 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const quantityInputs = document.querySelectorAll('.cart-item-quantity');
-
-    quantityInputs.forEach(input => {
+    document.querySelectorAll('.cart-item-quantity').forEach(input => {
         input.addEventListener('change', function() {
             const prodottoId = this.dataset.prodottoId;
-            const quantita = this.value;
-            const form = this.closest('form');
+            let quantita = parseInt(this.value);
+            const maxQuantita = parseInt(this.max);
 
-            // Prepara i dati da inviare
+            if (quantita > maxQuantita) {
+                alert('La quantità richiesta non è disponibile. Verrà impostata la massima quantità possibile.');
+                quantita = maxQuantita;
+                this.value = quantita;
+            }
+
             const formData = new URLSearchParams();
             formData.append('azione', 'aggiorna');
             formData.append('prodottoId', prodottoId);
             formData.append('quantita', quantita);
-            formData.append('ajax', 'true'); // Parametro per identificare la richiesta AJAX
+            formData.append('ajax', 'true');
 
-            // Esegui la chiamata fetch
             fetch('gestione-carrello', {
                 method: 'POST',
                 body: formData
             })
                 .then(response => response.json())
                 .then(data => {
-                    // Aggiorna il subtotale dell'articolo
-                    const subtotaleElement = document.getElementById('subtotale-' + prodottoId);
-                    if (subtotaleElement) {
-                        // Formatta come valuta
-                        subtotaleElement.textContent = '€ ' + data.subtotaleArticolo.toFixed(2);
-                    }
-
-                    // Aggiorna il totale complessivo del carrello
-                    const totaleElement = document.getElementById('cart-total');
-                    if (totaleElement) {
-                        totaleElement.textContent = '€ ' + data.totaleCarrello.toFixed(2);
-                    }
-
-                    // Se la quantità è 0, ricarica la pagina per rimuovere l'articolo dalla vista
-                    if(quantita <= 0) {
+                    if (quantita <= 0) {
                         window.location.reload();
+                        return;
+                    }
+                    const subtotaleContainer = document.getElementById('subtotale-container-' + prodottoId);
+                    const totaleContainer = document.getElementById('cart-total-container');
+                    if (subtotaleContainer) {
+                        subtotaleContainer.innerHTML = 'Subtotale: <strong>€ ' + data.subtotaleArticolo.toFixed(2) + '</strong>';
+                    }
+                    if (totaleContainer) {
+                        totaleContainer.innerHTML = 'Totale: <strong>€ ' + data.totaleCarrello.toFixed(2) + '</strong>';
                     }
                 })
                 .catch(error => console.error('Errore:', error));
