@@ -1,4 +1,3 @@
-<%@ page import="it.unisa.cardshop.model.Utente" %>
 <%@ page session="true" %>
 
 <!DOCTYPE html>
