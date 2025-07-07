@@ -190,4 +190,17 @@ public class UtenteDAOImp implements UtenteDAO {
             if (connection != null) connection.close();
         }
     }
+    @Override
+
+    public void updatePassword(Utente utente) throws SQLException {
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement("UPDATE utente SET password_hash = ? WHERE id = ?")) {
+
+            ps.setString(1, utente.getPasswordHash());
+            ps.setInt(2, utente.getId());
+            ps.executeUpdate();
+        }
+    }
+
+
 }
