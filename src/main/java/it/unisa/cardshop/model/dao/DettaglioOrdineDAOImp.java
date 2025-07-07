@@ -22,7 +22,7 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
     @Override
     public synchronized void doSave(DettaglioOrdine dettaglio, Connection con) throws SQLException {
         PreparedStatement preparedStatement = null;
-        String insertSQL = "INSERT INTO dettaglioordine (ordine_id, prodotto_id, quantita, prezzo_unitario, indirizzo, CAP) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO dettaglioordine (ordine_id, prodotto_id, quantita, prezzo_unitario, indirizzo, cap) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             preparedStatement = con.prepareStatement(insertSQL);
@@ -31,7 +31,7 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
             preparedStatement.setInt(3, dettaglio.getQuantita());
             preparedStatement.setDouble(4, dettaglio.getPrezzoUnitario());
             preparedStatement.setString(5, dettaglio.getIndirizzo());
-            preparedStatement.setInt(6, dettaglio.getCap());
+            preparedStatement.setString(6, dettaglio.getCap());
             preparedStatement.executeUpdate();
         } finally {
             if (preparedStatement != null) preparedStatement.close();
@@ -54,9 +54,6 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
         return list;
     }
 
-    /**
-     * Mappa una riga di ResultSet a un oggetto DettaglioOrdine
-     */
     private DettaglioOrdine extractDettaglio(ResultSet rs) throws SQLException {
         DettaglioOrdine d = new DettaglioOrdine();
         d.setOrdineId(rs.getInt("ordine_id"));
@@ -64,7 +61,7 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
         d.setQuantita(rs.getInt("quantita"));
         d.setPrezzoUnitario(rs.getDouble("prezzo_unitario"));
         d.setIndirizzo(rs.getString("indirizzo"));
-        d.setCap(rs.getInt("CAP"));
+        d.setCap(rs.getString("CAP"));
         return d;
     }
 }

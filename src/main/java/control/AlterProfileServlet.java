@@ -30,6 +30,7 @@ public class AlterProfileServlet extends HttpServlet {
             String email = request.getParameter("email");
             String telefono = request.getParameter("telefono");
             String indirizzo = request.getParameter("indirizzo");
+            String cap = request.getParameter("cap");
 
 
             Utente utenteEsistente = utenteDAO.doRetrieveByKey(id);
@@ -41,16 +42,15 @@ public class AlterProfileServlet extends HttpServlet {
                     utenteEsistente.getPasswordHash(),
                     telefono,
                     indirizzo,
+                    cap,
                     utenteEsistente.isAdmin()
             );
 
             utenteDAO.doUpdate(utenteAggiornato);
-
-            // aggiorna la sessione
             HttpSession session = request.getSession();
             session.setAttribute("utente", utenteAggiornato);
 
-            response.sendRedirect("profilo.jsp"); // reindirizza alla pagina profilo
+            response.sendRedirect("profilo.jsp");
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
             request.setAttribute("errore", "Errore durante l'aggiornamento.");

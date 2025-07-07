@@ -7,18 +7,19 @@ public class Utente {
     private String passwordHash;
     private String telefono;
     private String indirizzo;
-    private int cap;
+    private String cap;
     private boolean is_admin;
 
     public Utente() {}
 
-    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo, boolean is_admin) {
+    public Utente(int id, String nome, String email, String passwordHash, String telefono, String indirizzo, String cap, boolean is_admin) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.passwordHash = passwordHash;
         this.telefono = telefono;
         this.indirizzo = indirizzo;
+        this.cap = cap;
         this.is_admin = is_admin;
     }
 
@@ -52,8 +53,8 @@ public class Utente {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
-    public int getCap() { return cap;}
-    public void setCap(int cap) { this.cap = cap;}
+    public String getCap() { return cap;}
+    public void setCap(String cap) { this.cap = cap;}
     public boolean isAdmin() { return is_admin; }
     public void setAdmin(boolean isAdmin) { this.is_admin = isAdmin; }
 }

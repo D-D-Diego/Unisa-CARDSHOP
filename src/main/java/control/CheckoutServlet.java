@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Date;
+
 
 @WebServlet("/checkout")
 public class CheckoutServlet extends HttpServlet {
@@ -31,24 +31,20 @@ public class CheckoutServlet extends HttpServlet {
             response.sendRedirect("cart.jsp");
             return;
         }
-
         Connection connection = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
             connection.setAutoCommit(false);
-
             OrdineDAO ordineDAO = new OrdineDAOImp();
             DettaglioOrdineDAO dettaglioDAO = new DettaglioOrdineDAOImp();
             ProdottoDAO prodottoDAO = new ProdottoDAOImp();
 
-            // 1. Crea e salva l'ordine principale
             Ordine ordine = new Ordine();
             ordine.setClienteId(utente.getId());
             ordine.setDataOrdine(java.time.LocalDateTime.now());
             ordine.setTotale(carrello.getTotaleComplessivo());
             ordineDAO.doSave(ordine, connection);
 
-            // 2. Salva i dettagli dell'ordine e aggiorna le quantità dei prodotti
             for (ArticoloCarrello articolo : carrello.getArticoli()) {
                 DettaglioOrdine dettaglio = new DettaglioOrdine();
                 dettaglio.setOrdineId(ordine.getId());
@@ -56,15 +52,13 @@ public class CheckoutServlet extends HttpServlet {
                 dettaglio.setQuantita(articolo.getQuantita());
                 dettaglio.setPrezzoUnitario(articolo.getProdotto().getPrezzo());
                 dettaglio.setIndirizzo(utente.getIndirizzo());
-                dettaglio.setCap(84100); // Esempio: dovrai recuperare il CAP reale
+                dettaglio.setCap(utente.getCap());
                 dettaglioDAO.doSave(dettaglio, connection);
                 prodottoDAO.doUpdateQuantita(articolo.getProdotto().getId(), articolo.getQuantita(), connection);
             }
-
             connection.commit();
             session.removeAttribute("carrello");
             response.sendRedirect("conferma-ordine.jsp?orderId=" + ordine.getId());
-
         } catch (SQLException e) {
             if (connection != null) {
                 try {

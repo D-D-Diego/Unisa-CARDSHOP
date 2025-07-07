@@ -6,11 +6,11 @@ public class DettaglioOrdine {
     private int quantita;
     private double prezzoUnitario;
     private String indirizzo;
-    private int cap;
+    private String cap;
 
     public DettaglioOrdine() {}
 
-    public DettaglioOrdine(int ordineId, int prodottoId, int quantita, double prezzoUnitario, String indirizzo, int cap) {
+    public DettaglioOrdine(int ordineId, int prodottoId, int quantita, double prezzoUnitario, String indirizzo, String cap) {
         this.ordineId = ordineId;
         this.prodottoId = prodottoId;
         this.quantita = quantita;
@@ -47,10 +47,8 @@ public class DettaglioOrdine {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
-    public int getCap() {
-        return cap;
-    }
-    public void setCap(int cap) {
+    public String getCap() { return cap; }
+    public void setCap(String cap) {
         this.cap = cap;
     }
 }

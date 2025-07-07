@@ -16,6 +16,7 @@ public class UtenteDAOImp implements UtenteDAO {
         utente.setPasswordHash(rs.getString("password_hash"));
         utente.setTelefono(rs.getString("telefono"));
         utente.setIndirizzo(rs.getString("indirizzo"));
+        utente.setCap(rs.getString("cap"));
         utente.setAdmin(rs.getBoolean("is_admin"));
         return utente;
     }
@@ -35,7 +36,7 @@ public class UtenteDAOImp implements UtenteDAO {
             preparedStatement.setString(3, utente.getPasswordHash());
             preparedStatement.setString(4, utente.getTelefono());
             preparedStatement.setString(5, utente.getIndirizzo());
-            preparedStatement.setInt(6, utente.getCap());
+            preparedStatement.setString(6, utente.getCap());
             preparedStatement.setBoolean(7, utente.isAdmin());
             preparedStatement.executeUpdate();
         }finally {
@@ -161,7 +162,7 @@ public class UtenteDAOImp implements UtenteDAO {
             preparedStatement.setString(3, utente.getPasswordHash());
             preparedStatement.setString(4, utente.getTelefono());
             preparedStatement.setString(5, utente.getIndirizzo());
-            preparedStatement.setInt(6, utente.getCap());
+            preparedStatement.setString(6, utente.getCap());
             preparedStatement.setBoolean(7, utente.isAdmin());
             preparedStatement.setInt(8, utente.getId());
 

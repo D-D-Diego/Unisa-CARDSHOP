@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
             utente.setPasswordHash(passwordHash);
             utente.setTelefono(telefono);
             utente.setIndirizzo(indirizzo);
-            utente.setCap(Integer.parseInt(cap));
+            utente.setCap(cap);
             utente.setAdmin(false);
 
             utenteDAO.doSave(utente);
