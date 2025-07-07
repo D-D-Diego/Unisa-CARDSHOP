@@ -4,7 +4,9 @@ public class ArticoloOrdine {
     private Prodotto prodotto;
     private int quantitaAcquistata;
     private double prezzoAcquisto;
-    
+    private String indirizzo;
+    private String cap;
+
     public Prodotto getProdotto() {
         return prodotto;
     }
@@ -27,5 +29,17 @@ public class ArticoloOrdine {
 
     public void setPrezzoAcquisto(double prezzoAcquisto) {
         this.prezzoAcquisto = prezzoAcquisto;
+    }
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+    public String getCap() {
+        return cap;
+    }
+    public void setCap(String cap) {
+        this.cap = cap;
     }
 }

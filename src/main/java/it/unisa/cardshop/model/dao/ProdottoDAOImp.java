@@ -11,7 +11,7 @@ public class ProdottoDAOImp implements ProdottoDAO {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
 
-    private Prodotto extractProdottoFromResultSet(ResultSet rs) throws SQLException {
+    Prodotto extractProdottoFromResultSet(ResultSet rs) throws SQLException {
         Prodotto prodotto = new Prodotto();
         prodotto.setId(rs.getInt("id"));
         prodotto.setNome(rs.getString("nome"));
