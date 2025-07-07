@@ -64,28 +64,35 @@ public class OrdineDAOImp implements OrdineDAO {
 
         return ordine;
     }
+
     @Override
-    public List<Ordine> doRetrieveAllByUtente(int utenteId) throws SQLException {
-        String sql = "SELECT * FROM ordine WHERE cliente_id = ?";
+    public List<Ordine> doRetrieveByUtente(int clienteId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         List<Ordine> ordini = new ArrayList<>();
+        String selectSQL = "SELECT * FROM ordine WHERE cliente_id = ? ORDER BY data_ordine DESC";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try {
+            connection = DBConnection.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, clienteId);
+            rs = preparedStatement.executeQuery();
 
-            stmt.setInt(1, utenteId);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    Ordine ordine = new Ordine(
-                            rs.getInt("id"),
-                            rs.getInt("cliente_id"),
-                            rs.getTimestamp("data_ordine").toLocalDateTime(),
-                            rs.getDouble("totale")
-                    );
-                    ordini.add(ordine);
-                }
+            while (rs.next()) {
+                Ordine ordine = new Ordine();
+                ordine.setId(rs.getInt("id"));
+                ordine.setClienteId(rs.getInt("cliente_id"));
+                java.time.LocalDateTime dataOraDb = rs.getObject("data_ordine", java.time.LocalDateTime.class);
+                ordine.setDataOrdine(dataOraDb);
+                ordine.setTotale(rs.getDouble("totale"));
+                ordini.add(ordine);
             }
+        } finally {
+            if (rs != null) rs.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
         }
-
         return ordini;
     }
 

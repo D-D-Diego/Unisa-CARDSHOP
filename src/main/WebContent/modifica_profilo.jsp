@@ -42,11 +42,6 @@
                     <input type="text" id="indirizzo" name="indirizzo" value="<%= utente.getIndirizzo() %>" required/>
                 </div>
 
-                <div class="form-group">
-                    <label for="CAP">CAP:</label>
-                    <input type="text" id="CAP" name="cap" value="<%= utente.getCap() %>" required/>
-                </div>
-
                 <button type="submit" class="btn btn-primary">Aggiorna</button>
             </form>
         </div>

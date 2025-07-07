@@ -1,54 +1,57 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="it.unisa.cardshop.model.Utente, it.unisa.cardshop.model.Ordine, java.util.List, java.text.SimpleDateFormat" %>
+
+
+
 <!DOCTYPE html>
 <html lang="it">
+<%@ include file="common/header.jspf" %>
 <head>
-    <title>Il mio profilo</title>
+    <title>Profilo di <%= utente.getNome() %></title>
 </head>
 <body>
-<%@ include file="common/header.jspf" %>
 <%
     if (utente == null) {
         response.sendRedirect("login.jsp");
         return;
     }
+    List<Ordine> ordini = (List<Ordine>) request.getAttribute("ordini");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 %>
 <main class="container profile-page">
     <h1>Profilo Utente</h1>
-
     <div class="profile-info">
         <h2>Informazioni Personali</h2>
-        <p><strong>Nome:</strong> ${utente.nome}</p>
-        <p><strong>Email:</strong> ${utente.email}</p>
-        <p><strong>Telefono:</strong> ${utente.telefono}</p>
-        <p><strong>Indirizzo Predefinito:</strong> ${utente.indirizzo}</p>
-        <p><strong>CAP:</strong> ${utente.cap}</p>
-    </div>
-
-    <div class="profile-actions">
-        <h2>Azioni</h2>
-        <a href="modifica_profilo.jsp" class="btn btn-secondary">Modifica Profilo</a>
-        <a href="change-password.jsp" class="btn btn-secondary">Cambia Password</a>
+        <p><strong>Nome:</strong> <%= utente.getNome() %></p>
+        <p><strong>Email:</strong> <%= utente.getEmail() %></p>
     </div>
 
     <div class="profile-orders">
-        <h2>Storico Ordini</h2>
-        <%--
-            NOTA: Per funzionare, una servlet dovrà recuperare la lista degli ordini
-            e salvarla in un attributo della richiesta, es: request.setAttribute("ordini", listaOrdini);
-        --%>
-        <c:if test="${not empty ordini}">
-            <ul class="order-list">
-                <c:forEach var="ordine" items="${ordini}">
-                    <li>
-                        <strong>Ordine #${ordine.id}</strong> - Data: ${ordine.dataOrdine}
-                        <a href="order-details.jsp?orderId=${ordine.id}" class="btn btn-link">Vedi Dettagli</a>
-                    </li>
-                </c:forEach>
-            </ul>
-        </c:if>
-        <c:if test="${empty ordini}">
-            <p>Non hai ancora effettuato nessun ordine.</p>
-        </c:if>
+        <h2>Il Tuo Storico Ordini</h2>
+        <% if (ordini == null || ordini.isEmpty()) { %>
+        <p>Non hai ancora effettuato nessun ordine.</p>
+        <% } else { %>
+        <table class="orders-table">
+            <thead>
+            <tr>
+                <th>ID Ordine</th>
+                <th>Totale</th>
+                <th>Azioni</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (Ordine ordine : ordini) { %>
+            <tr>
+                <td>#<%= ordine.getId() %></td>
+                <td>€ <%= String.format("%.2f", ordine.getTotale()) %></td>
+                <td>
+                    <a href="dettaglio-ordine?id=<%= ordine.getId() %>" class="btn">Vedi Dettagli</a>
+                </td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
     </div>
 </main>
 
