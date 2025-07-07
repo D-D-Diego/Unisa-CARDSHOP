@@ -22,7 +22,7 @@
     <div class="product-detail-image">
       <%-- Quando implementerai la logica delle foto, userai: --%>
       <%-- <img src="${pageContext.request.contextPath}/<%= prodotto.getFoto() %>" alt="Immagine di <%= prodotto.getNome() %>"> --%>
-      <img src="https://placehold.co/400x400?text=<%= prodotto.getNome() %>" alt="Immagine di <%= prodotto.getNome() %>">
+        <img src="${pageContext.request.contextPath}/ImageServlet?id=<%= prodotto.getId() %>" alt="Immagine di <%= prodotto.getNome() %>">
     </div>
     <div class="product-info">
       <h2><%= prodotto.getNome() %></h2>

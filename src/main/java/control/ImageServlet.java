@@ -42,7 +42,7 @@ public class ImageServlet extends HttpServlet {
         try {
             conn = DBConnection.getConnection();
 
-            String sql = "SELECT foto FROM prodotti WHERE id = ?";
+            String sql = "SELECT foto FROM prodotto WHERE id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, productId);
             rs = stmt.executeQuery();
@@ -56,7 +56,7 @@ public class ImageServlet extends HttpServlet {
                 }
 
 
-                response.setContentType("image/jpg");
+                response.setContentType("image/jpeg");
 
                 outputStream = response.getOutputStream();
                 byte[] buffer = new byte[4096];

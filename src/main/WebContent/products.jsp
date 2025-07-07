@@ -53,7 +53,7 @@
     %>
     <div class="product-card">
       <a href="dettaglio-prodotto?id=<%= prodotto.getId() %>">
-        <img src="https://placehold.co/200x200?text=<%= prodotto.getNome() %>" alt="Immagine di <%= prodotto.getNome() %>">
+        <img src="${pageContext.request.contextPath}/ImageServlet?id=<%= prodotto.getId() %>" alt="Immagine di <%= prodotto.getNome() %>">
         <h3><%= prodotto.getNome() %></h3>
       </a>
       <p class="price">€ <%= String.format("%.2f", prodotto.getPrezzo()) %></p>
