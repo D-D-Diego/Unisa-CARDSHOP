@@ -37,16 +37,34 @@ public class CategoriaDAOImp implements CategoriaDAO {
 
     @Override
     public List<Categoria> doRetrieveAll() throws SQLException {
-        String sql = "SELECT id, nome FROM categoria";
-        List<Categoria> list = new ArrayList<>();
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+        List<Categoria> categorie = new ArrayList<>();
+        String selectSQL = "SELECT * FROM categoria";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unisa_cardshop", "root", "");
+            preparedStatement = connection.prepareStatement(selectSQL);
+            rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                list.add(extractCategoria(rs));
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNome(rs.getString("nome"));
+                categorie.add(categoria);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        return list;
+        return categorie;
     }
 
     @Override

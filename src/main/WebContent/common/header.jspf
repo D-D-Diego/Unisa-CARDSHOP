@@ -22,8 +22,8 @@
 
         <nav class="main-nav">
             <ul>
-                <li><a href="${pageContext.request.contextPath}/products">Prodotti</a></li>
-                <li><a href="${pageContext.request.contextPath}/cart.jsp">Carrello</a></li>
+                <li><a href="${pageContext.request.contextPath}/visualizza-prodotti">Prodotti</a></li>
+                <li><a href="${pageContext.request.contextPath}/visualizza-carrello">Carrello</a></li>
                 <%
                     Utente utente = (Utente) session.getAttribute("utente");
                     if (utente != null) {

@@ -15,13 +15,16 @@ public class Prodotto {
     private byte[] foto;
     public Prodotto() {}
 
-    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId, boolean isDisponibile) {
+    public Prodotto(int id, String nome, String descrizione, double prezzo, int quantita, int categoriaId, boolean isDisponibile, String specifiche, byte[] foto) {
         this.id = id;
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.quantita = quantita;
         this.categoriaId = categoriaId;
+        this.isDisponibile = isDisponibile;
+        this.specifiche = specifiche;
+        this.foto = foto;
     }
 
     public int getId() {
