@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/admin/New_Product")
+@WebServlet("/New_Product")
 public class NewProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -24,7 +24,7 @@ public class NewProductServlet extends HttpServlet {
             boolean isDisponibile = Boolean.parseBoolean(request.getParameter("disponibile"));
             String specifiche = request.getParameter("specifiche");
 
-            // Nessuna immagine, quindi foto è null
+
             byte[] foto = null;
 
             Prodotto prodotto = new Prodotto();
@@ -35,7 +35,6 @@ public class NewProductServlet extends HttpServlet {
             prodotto.setCategoriaId(categoriaId);
             prodotto.setDisponibile(isDisponibile);
             prodotto.setSpecifiche(specifiche);
-            prodotto.setFoto(foto); // null
 
             ProdottoDAO dao = new ProdottoDAOImp();
             dao.doSave(prodotto);
@@ -45,7 +44,7 @@ public class NewProductServlet extends HttpServlet {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
             request.setAttribute("errore", "Errore durante l'aggiunta del prodotto.");
-            request.getRequestDispatcher("aggiungiProdotto.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin/new_product.jsp").forward(request, response);
         }
     }
 }

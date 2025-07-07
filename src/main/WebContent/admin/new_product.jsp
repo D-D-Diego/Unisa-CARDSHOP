@@ -16,7 +16,7 @@
 <main>
     <div  class="auth-form-box">
         <h2>Aggiungi Nuovo Prodotto</h2>
-        <form action="New_Product" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/New_Product" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -54,11 +54,6 @@
             <div class="form-group">
                 <label for="specifiche">Specifiche</label>
                 <input type="text" id="specifiche" name="specifiche">
-            </div>
-
-            <div class="form-group">
-                <label for="foto">Foto Prodotto</label>
-                <input type="file" id="foto" name="foto" accept="image/*" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Aggiungi</button>
