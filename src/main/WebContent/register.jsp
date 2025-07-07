@@ -36,6 +36,7 @@
             <div class="form-group">
                 <label for="reg-cap">CAP:</label>
                 <input type="text" id="reg-cap" name="cap" required>
+                <span id="cap-error" class="field-error"></span>
             </div>
             <button type="submit" class="btn btn-primary">Registrati</button>
         </form>

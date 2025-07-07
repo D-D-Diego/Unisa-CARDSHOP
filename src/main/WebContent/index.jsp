@@ -8,11 +8,6 @@
 <%@include file="common/header.jspf"%>
 
 <main class="container hero-section">
-    <section class="featured-products">
-        <h2>Novità e Offerte Speciali</h2>
-        <div id="product-list" class="product-grid">
-        </div>
-    </section>
 
     <section class="categories-preview">
         <h2>Esplora le Nostre Categorie</h2>
