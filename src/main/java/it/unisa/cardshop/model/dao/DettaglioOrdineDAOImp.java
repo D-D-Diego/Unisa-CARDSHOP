@@ -9,16 +9,32 @@ public class DettaglioOrdineDAOImp implements DettaglioOrdineDAO {
 
     @Override
     public synchronized void doSave(DettaglioOrdine dettaglio) throws SQLException {
-        String sql = "INSERT INTO dettaglioordine (ordine_id, prodotto_id, quantita, prezzo_unitario, indirizzo, CAP) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, dettaglio.getOrdineId());
-            ps.setInt(2, dettaglio.getProdottoId());
-            ps.setInt(3, dettaglio.getQuantita());
-            ps.setDouble(4, dettaglio.getPrezzoUnitario());
-            ps.setString(5, dettaglio.getIndirizzo());
-            ps.setInt(6, dettaglio.getCap());
-            ps.executeUpdate();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DBConnection.getConnection();
+            doSave(dettaglio, connection);
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
+
+    @Override
+    public synchronized void doSave(DettaglioOrdine dettaglio, Connection con) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String insertSQL = "INSERT INTO dettaglioordine (ordine_id, prodotto_id, quantita, prezzo_unitario, indirizzo, CAP) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try {
+            preparedStatement = con.prepareStatement(insertSQL);
+            preparedStatement.setInt(1, dettaglio.getOrdineId());
+            preparedStatement.setInt(2, dettaglio.getProdottoId());
+            preparedStatement.setInt(3, dettaglio.getQuantita());
+            preparedStatement.setDouble(4, dettaglio.getPrezzoUnitario());
+            preparedStatement.setString(5, dettaglio.getIndirizzo());
+            preparedStatement.setInt(6, dettaglio.getCap());
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
         }
     }
 

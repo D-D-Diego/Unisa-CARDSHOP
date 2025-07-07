@@ -1,6 +1,7 @@
 package it.unisa.cardshop.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Ordine {
     private int id;

@@ -9,22 +9,34 @@ public class OrdineDAOImp implements OrdineDAO {
 
     @Override
     public synchronized void doSave(Ordine ordine) throws SQLException {
-        String sql = "INSERT INTO ordine (cliente_id, data_ordine, totale) VALUES (?, ?, ?)";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String insertSQL = "INSERT INTO ordine (cliente_id, data_ordine, totale) VALUES (?, ?, ?)";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try {
+            connection = DBConnection.getConnection();
+            doSave(ordine, connection);
+        } finally {
+            if (connection != null) connection.close();
+        }
+    }
 
-            stmt.setInt(1, ordine.getClienteId());
-            stmt.setTimestamp(2, Timestamp.valueOf(ordine.getDataOrdine()));
-            stmt.setDouble(3, ordine.getTotale());
-
-            stmt.executeUpdate();
-
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    ordine.setId(rs.getInt(1));
-                }
+    @Override
+    public synchronized void doSave(Ordine ordine, Connection con) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String insertSQL = "INSERT INTO ordine (cliente_id, data_ordine, totale) VALUES (?, ?, ?)";
+        try {
+            preparedStatement = con.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, ordine.getClienteId());
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(ordine.getDataOrdine()));
+            preparedStatement.setDouble(3, ordine.getTotale());
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if (rs.next()) {
+                ordine.setId(rs.getInt(1));
             }
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
         }
     }
 
@@ -96,7 +108,6 @@ public class OrdineDAOImp implements OrdineDAO {
                 ordini.add(ordine);
             }
         }
-
         return ordini;
     }
 

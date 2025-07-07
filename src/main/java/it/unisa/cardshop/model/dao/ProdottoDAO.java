@@ -1,6 +1,8 @@
 package it.unisa.cardshop.model.dao;
 
 import it.unisa.cardshop.model.Prodotto;
+
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,5 +12,6 @@ public interface ProdottoDAO {
     Prodotto doRetrieveByKey(int id) throws SQLException;
     List<Prodotto> doRetrieveAll() throws SQLException;
     void doUpdate(Prodotto prodotto) throws SQLException;
+    void doUpdateQuantita(int prodottoId, int quantitaDaSottrarre, Connection con) throws SQLException;
     void doDelete(int id) throws SQLException;
 }
