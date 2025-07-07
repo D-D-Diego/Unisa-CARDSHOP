@@ -4,7 +4,7 @@
     <title>Dashboard Admin</title>
 </head>
 <body>
-<%@ include file="../../common/header.jspf" %>
+<%@ include file="../common/header.jspf" %>
 <main class="container admin-dashboard">
     <h1>Pannello di Controllo Amministratore</h1>
     <div class="dashboard-cards">
@@ -42,6 +42,6 @@
         </div>
     </div>
 </main>
-<%@ include file="../../common/footer.jspf" %>
+<%@ include file="../common/footer.jspf" %>
 </body>
 </html>

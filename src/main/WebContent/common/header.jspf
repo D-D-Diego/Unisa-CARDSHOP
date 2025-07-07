@@ -40,7 +40,7 @@
                 <%
                     if (utente != null && utente.isAdmin()) {
                 %>
-                <li><a href="${pageContext.request.contextPath}/admin/dashboard">Pannello Admin</a></li>
+                <li><a href="admin/dashboard.jsp">Pannello Admin</a></li>
                 <%
                     }
                 %>

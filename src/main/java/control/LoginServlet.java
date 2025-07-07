@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("utente", utente);
 
                 if (utente.isAdmin()) {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/dashboard.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/dashboard.jsp");
                     dispatcher.forward(request, response);
                 } else {
                     response.sendRedirect("index.jsp");

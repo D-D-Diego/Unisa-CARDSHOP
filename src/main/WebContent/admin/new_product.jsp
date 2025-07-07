@@ -12,12 +12,11 @@
         <div class="logo"><a href="#">CardShop Admin</a></div>
     </div>
 </header>
-<%@ include file="../../common/header.jspf" %>
+<%@ include file="../common/header.jspf" %>
 <main>
-    <div class="container auth-form-box">
+    <div  class="auth-form-box">
         <h2>Aggiungi Nuovo Prodotto</h2>
-        <form action="admin/New_Product" method="post" enctype="multipart/form-data" class="auth-form-box">
-            <h2>Aggiungi Prodotto</h2>
+        <form action="New_Product" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -67,6 +66,6 @@
     </div>
 </main>
 
-<%@ include file="../../common/footer.jspf" %>
+<%@ include file="../common/footer.jspf" %>
 </body>
 </html>
