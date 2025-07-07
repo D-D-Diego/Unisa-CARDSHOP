@@ -31,9 +31,9 @@
             <a href="manage-orders.jsp" class="btn btn-primary">Gestisci Ordini</a>
         </div>
         <div class="card">
-            <h2>Configurazione Sito</h2>
-            <p>Modifica le impostazioni generali del sito e del negozio.</p>
-            <a href="site-settings.jsp" class="btn btn-primary">Configura Sito</a>
+            <h2>Nuovo prodotto</h2>
+            <p>Aggiungi un nuovo prodotto al catalogo</p>
+            <a href="New_Product.jsp" class="btn btn-primary">Aggiungi prodotto</a>
         </div>
         <div class="card">
             <h2>Supporto Clienti</h2>

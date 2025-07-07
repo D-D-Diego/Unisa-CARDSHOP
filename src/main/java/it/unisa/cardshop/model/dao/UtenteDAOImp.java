@@ -152,7 +152,7 @@ public class UtenteDAOImp implements UtenteDAO {
     public void doUpdate(Utente utente) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String updateSQL = "UPDATE utenti SET nome = ?, email = ?, password_hash = ?, telefono = ?, indirizzo = ?, cap = ?, is_admin = ? WHERE id = ?";
+        String updateSQL = "UPDATE utente SET nome = ?, email = ?, password_hash = ?, telefono = ?, indirizzo = ?, cap = ?, is_admin = ? WHERE id = ?";
         try {
             connection = DBConnection.getConnection();
             preparedStatement = connection.prepareStatement(updateSQL);
@@ -178,7 +178,7 @@ public class UtenteDAOImp implements UtenteDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String deleteSQL = "DELETE FROM utenti WHERE id = ?";
+        String deleteSQL = "DELETE FROM utente WHERE id = ?";
 
         try {
             connection = DBConnection.getConnection();
