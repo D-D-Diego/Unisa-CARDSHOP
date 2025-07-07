@@ -28,7 +28,7 @@ public class ProdottoDAOImp implements ProdottoDAO {
     public synchronized void doSave(Prodotto prodotto) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String insertSQL = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, categoria_id, specifiche, foto) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO prodotto (nome, descrizione, prezzo, quantita, categoria_id, specifiche) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -107,7 +107,7 @@ public class ProdottoDAOImp implements ProdottoDAO {
     public void doUpdate(Prodotto prodotto) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String updateSQL = "UPDATE prodotto SET nome=?, descrizione=?, prezzo=?, quantita=?, categoria_id=?, specifiche=?, foto=? WHERE id=?";
+        String updateSQL = "UPDATE prodotto SET nome=?, descrizione=?, prezzo=?, quantita=?, categoria_id=?, specifiche=? WHERE id=?";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -120,7 +120,7 @@ public class ProdottoDAOImp implements ProdottoDAO {
             preparedStatement.setInt(5, prodotto.getCategoriaId());
             preparedStatement.setString(6, prodotto.getSpecifiche());
             //preparedStatement.setString(7, prodotto.getFoto());
-            preparedStatement.setInt(8, prodotto.getId());
+            preparedStatement.setInt(7, prodotto.getId());
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

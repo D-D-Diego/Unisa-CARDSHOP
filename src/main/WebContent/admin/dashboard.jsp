@@ -1,47 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="it.unisa.cardshop.model.Utente" %>
+<%@ include file="../common/header.jspf" %>
+<%
+    String nomeAdmin = (utente != null && utente.isAdmin()) ? utente.getNome() : "Admin";
+%>
 <html>
 <head>
-    <title>Dashboard Admin</title>
+    <title>Dashboard Amministratore</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css">
 </head>
 <body>
-<%@ include file="../common/header.jspf" %>
-<main class="container admin-dashboard">
-    <h1>Pannello di Controllo Amministratore</h1>
-    <div class="dashboard-cards">
-        <div class="card">
-            <h2>Gestione Prodotti</h2>
-            <p>Visualizza, aggiungi o modifica i prodotti disponibili nel negozio.</p>
-            <a href="manage-products.jsp" class="btn btn-primary">Gestisci Prodotti</a>
-        </div>
-        <div class="card">
-            <h2>Gestione Utenti</h2>
-            <p>Visualizza e gestisci gli utenti registrati.</p>
-            <a href="manage-users.jsp" class="btn btn-primary">Gestisci Utenti</a>
-        </div>
-        <div class="card">
-            <h2>Statistiche Vendite</h2>
-            <p>Visualizza le statistiche delle vendite e le performance del negozio.</p>
-            <a href="sales-stats.jsp" class="btn btn-primary">Visualizza Statistiche</a>
-        </div>
-    </div>
-    <div class="dashboard-cards">
-        <div class="card">
-            <h2>Gestione Ordini</h2>
-            <p>Visualizza e gestisci gli ordini effettuati dagli utenti.</p>
-            <a href="manage-orders.jsp" class="btn btn-primary">Gestisci Ordini</a>
-        </div>
-        <div class="card">
-            <h2>Nuovo prodotto</h2>
-            <p>Aggiungi un nuovo prodotto al catalogo</p>
-            <a href="${pageContext.request.contextPath}/admin/new_product.jsp" class="btn btn-primary">Aggiungi prodotto</a>
-        </div>
-        <div class="card">
-            <h2>Supporto Clienti</h2>
-            <p>Gestisci le richieste di supporto e le domande degli utenti.</p>
-            <a href="customer-support.jsp" class="btn btn-primary">Gestisci Supporto</a>
+
+<main class="container">
+    <div class="dashboard-container">
+        <h1 class="page-title">Benvenuto, <%= nomeAdmin %></h1>
+        <p>Seleziona un'operazione per iniziare.</p>
+
+        <div class="dashboard-actions">
+            <a href="${pageContext.request.contextPath}/admin/new_product.jsp" class="btn btn-success">
+                Nuovo Prodotto
+            </a>
+
+            <a href="${pageContext.request.contextPath}/admin/manage-products" class="btn btn-primary">
+                Gestione Prodotti
+            </a>
         </div>
     </div>
 </main>
+
 <%@ include file="../common/footer.jspf" %>
 </body>
 </html>

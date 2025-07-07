@@ -50,6 +50,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-j-9.3.0" level="project" />
-    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="b" level="project" />
   </component>
 </module>

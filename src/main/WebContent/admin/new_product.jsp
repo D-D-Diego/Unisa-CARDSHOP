@@ -1,63 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="it">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Aggiungi Prodotto</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title>Aggiungi Nuovo Prodotto</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css">
 </head>
 <body>
-<header class="main-header">
-    <div class="container">
-        <div class="logo"><a href="#">CardShop Admin</a></div>
-    </div>
-</header>
 <%@ include file="../common/header.jspf" %>
-<main>
-    <div  class="auth-form-box">
-        <h2>Aggiungi Nuovo Prodotto</h2>
-        <form action="${pageContext.request.contextPath}/New_Product" method="post" enctype="multipart/form-data">
 
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-
-            <div class="form-group">
-                <label for="descrizione">Descrizione</label>
-                <input type="text" id="descrizione" name="descrizione" required>
-            </div>
-
-            <div class="form-group">
-                <label for="prezzo">Prezzo</label>
-                <input type="number" id="prezzo" name="prezzo" step="0.01" required>
-            </div>
-
-            <div class="form-group">
-                <label for="quantita">Quantità</label>
-                <input type="number" id="quantita" name="quantita" required>
-            </div>
-
-            <div class="form-group">
-                <label for="categoriaId">Categoria ID</label>
-                <input type="number" id="categoriaId" name="categoriaId" required>
-            </div>
-
-            <div class="form-group">
-                <label for="disponibile">Disponibile</label>
-                <select id="disponibile" name="disponibile">
-                    <option value="true">Sì</option>
-                    <option value="false">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="specifiche">Specifiche</label>
-                <input type="text" id="specifiche" name="specifiche">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
-        </form>
+<main class="container">
+    <div class="auth-form-container">
+        <div class="auth-form-box">
+            <h2>Aggiungi Prodotto</h2>
+            <form action="${pageContext.request.contextPath}/New_Product" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome Prodotto</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="descrizione">Descrizione</label>
+                    <textarea id="descrizione" name="descrizione" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="prezzo">Prezzo (€)</label>
+                    <input type="number" step="0.01" id="prezzo" name="prezzo" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantita">Quantità</label>
+                    <input type="number" id="quantita" name="quantita" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoriaId">ID Categoria</label>
+                    <input type="number" id="categoriaId" name="categoriaId" required>
+                </div>
+                <div class="form-group">
+                    <label for="specifiche">Specifiche</label>
+                    <input type="text" id="specifiche" name="specifiche">
+                </div>
+                <div class="form-group">
+                    <label for="disponibile">Disponibile</label>
+                    <select id="disponibile" name="disponibile" class="form-control">
+                        <option value="true" selected>Sì, rendi disponibile</option>
+                        <option value="false">No, mantieni nascosto</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Aggiungi Prodotto</button>
+            </form>
+        </div>
     </div>
 </main>
 

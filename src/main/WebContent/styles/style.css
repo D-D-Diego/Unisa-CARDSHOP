@@ -542,6 +542,28 @@ main {
     padding-top: 10px;
 }
 
+/* --- Sez admin --- */
+.dashboard-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.dashboard-actions .btn {
+    font-size: 1.2em;
+    padding: 20px 40px;
+    width: 250px;
+}
+
+.management-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.management-table th, .management-table td { padding: 12px; border: 1px solid var(--border-color); text-align: left; }
+.management-table thead { background-color: var(--dark-color); color: white; }
+.management-table .btn { padding: 8px 12px; font-size: 0.9em; }
+
 /* ==========================================================================
    6. Design Responsive (Unico Blocco Ordinato)
    ========================================================================== */
