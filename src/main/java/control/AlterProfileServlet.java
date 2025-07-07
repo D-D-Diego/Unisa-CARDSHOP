@@ -54,7 +54,7 @@ public class AlterProfileServlet extends HttpServlet {
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
             request.setAttribute("errore", "Errore durante l'aggiornamento.");
-            request.getRequestDispatcher("modificaUtente.jsp").forward(request, response);
+            request.getRequestDispatcher("profilo.jsp").forward(request, response);
         }
     }
 }

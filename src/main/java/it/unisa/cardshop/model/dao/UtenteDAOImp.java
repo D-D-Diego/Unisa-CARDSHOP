@@ -168,7 +168,7 @@ public class UtenteDAOImp implements UtenteDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String updateSQL = "UPDATE utenti SET nome = ?, email = ?, password_hash = ?, telefono = ?, indirizzo = ?, is_admin = ? WHERE id = ?";
+        String updateSQL = "UPDATE utente SET nome = ?, email = ?, password_hash = ?, telefono = ?, indirizzo = ?, is_admin = ? WHERE id = ?";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -197,7 +197,7 @@ public class UtenteDAOImp implements UtenteDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String deleteSQL = "DELETE FROM utenti WHERE id = ?";
+        String deleteSQL = "DELETE FROM utente WHERE id = ?";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -25,7 +25,7 @@
 
     <div class="profile-actions">
         <h2>Azioni</h2>
-        <a href="edit-profile.jsp" class="btn btn-secondary">Modifica Profilo</a>
+        <a href="modifica_profilo.jsp" class="btn btn-secondary">Modifica Profilo</a>
         <a href="change-password.jsp" class="btn btn-secondary">Cambia Password</a>
     </div>
 
