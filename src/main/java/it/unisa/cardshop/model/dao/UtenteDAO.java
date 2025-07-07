@@ -11,4 +11,6 @@ public interface UtenteDAO {
     List<Utente> doRetrieveAll() throws SQLException;
     void doUpdate(Utente utente) throws SQLException;
     void doDelete(int id) throws SQLException;
+    void updatePassword(Utente utente) throws SQLException;
+
 }
