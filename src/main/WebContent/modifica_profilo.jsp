@@ -1,5 +1,3 @@
-<%@ page session="true" %>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
