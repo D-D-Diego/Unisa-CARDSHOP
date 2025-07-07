@@ -32,7 +32,6 @@
       <button type="submit" class="btn btn-primary">Aggiorna Password</button>
     </form>
 
-    <!-- Messaggi di feedback -->
     <div class="message">
       <%
         String error = (String) request.getAttribute("error");

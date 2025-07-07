@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="it.unisa.cardshop.model.Utente, it.unisa.cardshop.model.Ordine, java.util.List, java.text.SimpleDateFormat" %>
-
-
-
 <!DOCTYPE html>
 <html lang="it">
 <%@ include file="common/header.jspf" %>

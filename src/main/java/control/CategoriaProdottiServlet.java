@@ -22,7 +22,6 @@ public class CategoriaProdottiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // 1. Inizializza i DAO
         ProdottoDAO prodottoDAO = new ProdottoDAOImp();
         CategoriaDAO categoriaDAO = new CategoriaDAOImp();
 
@@ -32,10 +31,8 @@ public class CategoriaProdottiServlet extends HttpServlet {
         String categoriaIdStr = request.getParameter("categoriaId");
 
         try {
-            // 2. Recupera SEMPRE la lista di tutte le categorie
             categorie = categoriaDAO.doRetrieveAll();
 
-            // 3. Recupera i prodotti (filtrati o tutti)
             if (categoriaIdStr != null && !categoriaIdStr.trim().isEmpty()) {
                 int categoriaId = Integer.parseInt(categoriaIdStr);
                 products = prodottoDAO.doRetrieveByCategoria(categoriaId);
@@ -45,16 +42,13 @@ public class CategoriaProdottiServlet extends HttpServlet {
             }
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
-            // In un'applicazione reale, reindirizza a una pagina di errore
             throw new ServletException("Errore durante il recupero dei dati dal database.", e);
         }
 
-        // 4. Imposta ENTRAMBI gli attributi sulla richiesta PRIMA del forward
         request.setAttribute("products", products);
-        request.setAttribute("categorie", categorie); // Questo è il passaggio chiave che mancava
+        request.setAttribute("categorie", categorie);
         request.setAttribute("categoriaSelezionata", categoriaSelezionataId);
-        
-        // 5. Inoltra alla pagina JSP
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/products.jsp");
         dispatcher.forward(request, response);
     }

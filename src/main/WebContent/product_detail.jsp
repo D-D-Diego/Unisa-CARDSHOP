@@ -20,19 +20,17 @@
   <% if (prodotto != null) { %>
   <div class="product-detail-grid">
     <div class="product-detail-image">
-      <%-- Quando implementerai la logica delle foto, userai: --%>
-      <%-- <img src="${pageContext.request.contextPath}/<%= prodotto.getFoto() %>" alt="Immagine di <%= prodotto.getNome() %>"> --%>
         <img src="${pageContext.request.contextPath}/ImageServlet?id=<%= prodotto.getId() %>" alt="Immagine di <%= prodotto.getNome() %>">
     </div>
     <div class="product-info">
       <h2><%= prodotto.getNome() %></h2>
       <p class="price"><%= currencyFormatter.format(prodotto.getPrezzo()) %></p>
 
-      <%-- Sezione Descrizione --%>
+
       <h3>Descrizione</h3>
       <p><%= prodotto.getDescrizione() %></p>
 
-      <%-- Sezione Specifiche --%>
+
       <h3>Specifiche Tecniche</h3>
       <p><%= prodotto.getSpecifiche() %></p>
 

@@ -41,7 +41,6 @@ public class NewProductServlet extends HttpServlet {
 
             response.sendRedirect("successo.jsp");
         } catch (Exception e) {
-            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             request.setAttribute("errore", "Errore durante l'aggiunta del prodotto.");
             request.getRequestDispatcher("/admin/new_product.jsp").forward(request, response);

@@ -9,8 +9,6 @@
     }
     Ordine ordine = (Ordine) request.getAttribute("ordine");
     List<ArticoloOrdine> articoli = (List<ArticoloOrdine>) request.getAttribute("articoli");
-
-    // Prepara i formattatori
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ITALIAN);
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
 %>
@@ -28,13 +26,8 @@
     <div class="order-summary-box">
         <h3>Riepilogo Ordine</h3>
         <%
-            // Conversione della data
             LocalDateTime ldt = ordine.getDataOrdine();
             Date dataDaFormattare = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-
-            // --- SOLUZIONE ALL'ERRORE ---
-            // Recuperiamo l'indirizzo dal PRIMO articolo della lista,
-            // dato che è lo stesso per tutto l'ordine.
             String indirizzoSpedizione = articoli.get(0).getIndirizzo();
         %>
         <p><strong>Data Ordine:</strong> <%= dateFormat.format(dataDaFormattare) %></p>

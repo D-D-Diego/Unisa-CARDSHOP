@@ -19,7 +19,6 @@ public class AddToCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
 
-        // Recupera o crea il carrello dalla sessione
         Carrello carrello = (Carrello) session.getAttribute("carrello");
         if (carrello == null) {
             carrello = new Carrello();

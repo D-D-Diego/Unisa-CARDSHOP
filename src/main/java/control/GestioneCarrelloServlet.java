@@ -45,12 +45,10 @@ public class GestioneCarrelloServlet extends HttpServlet {
                 int quantita = Integer.parseInt(request.getParameter("quantita"));
                 carrello.aggiornaQuantita(prodottoId, quantita);
 
-                // --- LOGICA AJAX ---
                 if ("true".equals(ajax)) {
                     double totaleCarrello = carrello.getTotaleComplessivo();
                     double subtotaleArticolo = 0;
 
-                    // Trova il nuovo subtotale dell'articolo modificato
                     for (ArticoloCarrello art : carrello.getArticoli()) {
                         if (art.getProdotto().getId() == prodottoId) {
                             subtotaleArticolo = art.getPrezzoTotale();
@@ -61,8 +59,8 @@ public class GestioneCarrelloServlet extends HttpServlet {
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
                     String jsonResponse = String.format("{\"totaleCarrello\": %.2f, \"subtotaleArticolo\": %.2f}", totaleCarrello, subtotaleArticolo);
-                    response.getWriter().write(jsonResponse.replace(",", ".")); // Assicura che il formato decimale sia corretto
-                    return; // Termina qui per le richieste AJAX
+                    response.getWriter().write(jsonResponse.replace(",", "."));
+                    return;
                 }
             }
         } catch (NumberFormatException | SQLException e) {
@@ -71,7 +69,6 @@ public class GestioneCarrelloServlet extends HttpServlet {
             return;
         }
 
-        // Redirect per le richieste non-AJAX
         response.sendRedirect("cart.jsp");
     }
 }
