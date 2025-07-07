@@ -21,6 +21,7 @@
         <p><strong>Email:</strong> ${utente.email}</p>
         <p><strong>Telefono:</strong> ${utente.telefono}</p>
         <p><strong>Indirizzo Predefinito:</strong> ${utente.indirizzo}</p>
+        <p><strong>CAP:</strong> ${utente.cap}</p>
     </div>
 
     <div class="profile-actions">

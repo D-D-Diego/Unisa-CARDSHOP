@@ -33,6 +33,10 @@
                 <label for="reg-indirizzo">Indirizzo di Spedizione:</label>
                 <input type="text" id="reg-indirizzo" name="indirizzo" required>
             </div>
+            <div class="form-group">
+                <label for="reg-cap">CAP:</label>
+                <input type="text" id="reg-cap" name="cap" required>
+            </div>
             <button type="submit" class="btn btn-primary">Registrati</button>
         </form>
         <p>Hai già un account? <a href="login.jsp">Accedi qui</a></p>
