@@ -131,6 +131,22 @@ public class ProdottoDAOImp implements ProdottoDAO {
     }
 
     @Override
+    public void doUpdateQuantita(int prodottoId, int quantitaDaSottrarre, Connection con) throws SQLException {
+        Connection connection = con;
+        PreparedStatement preparedStatement = null;
+        String updateSQL = "UPDATE prodotto SET quantita = quantita - ? WHERE id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(updateSQL);
+            preparedStatement.setInt(1, quantitaDaSottrarre);
+            preparedStatement.setInt(2, prodottoId);
+            preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            // Connessione non chiusa poichè è una transazione
+        }
+    }
+
+    @Override
     public void doDelete(int id) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
