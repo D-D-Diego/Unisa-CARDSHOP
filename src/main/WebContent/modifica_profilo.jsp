@@ -42,6 +42,12 @@
                     <input type="text" id="indirizzo" name="indirizzo" value="<%= utente.getIndirizzo() %>" required/>
                 </div>
 
+                <div class="form-group">
+                    <label for="cap">Cap:</label>
+                    <input type="text" id="cap" name="cap" value="<%= utente.getCap() %>" required/>
+                    <span id="cap-error" class="field-error"></span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Aggiorna</button>
             </form>
         </div>
@@ -50,4 +56,21 @@
 
 <%@ include file="common/footer.jspf" %>
 </body>
+<script>
+    function validateCap() {
+        const capInput = document.getElementById('cap');
+        const errorSpans = {
+            cap: document.getElementById('capError')
+        };
+        const capValue = capInput.value.trim();
+        const errorElement = errorSpans.cap;
+
+        if (capValue && (capValue.length !== 5 || !/^\d{5}$/.test(capValue))) {
+            errorElement.textContent = 'Il CAP deve essere di 5 cifre numeriche.';
+        } else {
+            errorElement.textContent = '';
+        }
+        updateSubmitButtonState();
+    }
+</script>
 </html>

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('reg-email');
     const telefonoInput = document.getElementById('reg-telefono');
-    const capInput = document.getElementById('reg-cap'); // Elemento mancante
+    const capInput = document.getElementById('reg-cap');
     const registerForm = document.getElementById('register-form');
     const submitButton = registerForm.querySelector('button[type="submit"]');
     const errorSpans = {

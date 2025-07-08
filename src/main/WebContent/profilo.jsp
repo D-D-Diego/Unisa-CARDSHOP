@@ -21,6 +21,14 @@
         <h2>Informazioni Personali</h2>
         <p><strong>Nome:</strong> <%= utente.getNome() %></p>
         <p><strong>Email:</strong> <%= utente.getEmail() %></p>
+        <p><strong>Indirizzo:</strong> <%= utente.getIndirizzo() %></p>
+        <p><strong>Cap:</strong> <%= utente.getCap() %></p>
+    </div>
+
+    <div class="profile-actions">
+        <h2>Azioni</h2>
+        <a href="modifica_profilo.jsp" class="btn">Modifica Profilo</a>
+        <a href="edit-profile.jsp" class="btn">Cambia Password</a>
     </div>
 
     <div class="profile-orders">
