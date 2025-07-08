@@ -19,7 +19,7 @@
     <div class="profile-info">
         <div class="auth-form-box">
             <h2 class="page-title">Modifica Profilo</h2>
-            <form action="Alter_profile" method="post">
+            <form action="Alter_profile" method="post" id="profile-form">
                 <input type="hidden" name="id" value="<%= utente.getId() %>"/>
 
                 <div class="form-group">
@@ -56,21 +56,5 @@
 
 <%@ include file="common/footer.jspf" %>
 </body>
-<script>
-    function validateCap() {
-        const capInput = document.getElementById('cap');
-        const errorSpans = {
-            cap: document.getElementById('capError')
-        };
-        const capValue = capInput.value.trim();
-        const errorElement = errorSpans.cap;
-
-        if (capValue && (capValue.length !== 5 || !/^\d{5}$/.test(capValue))) {
-            errorElement.textContent = 'Il CAP deve essere di 5 cifre numeriche.';
-        } else {
-            errorElement.textContent = '';
-        }
-        updateSubmitButtonState();
-    }
-</script>
+<script src="${pageContext.request.contextPath}/scripts/profile_validator.js"></script>
 </html>
